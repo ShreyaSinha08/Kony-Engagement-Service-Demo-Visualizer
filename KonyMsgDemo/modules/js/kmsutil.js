@@ -345,12 +345,12 @@ function unSubscribePushSubscription(){
 					audiencePushSubs=false;
 					isPushSubs=false;
 					//if()
-					try{
+					/*try{
 					kony.timer.cancel("mytimer123");
 					}catch(err)
 					{
 						kony.print("error in canceling timer:: "+err);
-					}
+					}*/
 					if(isDeleteAudience==false){
 						kony.print("\n-----now updating audience-----\n");
 						updateAudience();
@@ -465,9 +465,9 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
 					kony.print("\n subscription updated\n");
 					isPushSubs=true;
 					kony.application.dismissLoadingScreen();
-					kony.timer.schedule("mytimer123",geoPosition,60, true);
+				//	kony.timer.schedule("mytimer123",geoPosition,60, true);
 					updateAudience();
-				//	geoPosition();
+					geoPosition();
 				}
 			}else
 				kony.application.dismissLoadingScreen();

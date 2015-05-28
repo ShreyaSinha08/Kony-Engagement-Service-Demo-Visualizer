@@ -25,7 +25,7 @@ function updateAudience(){
     	{
     			if(result["httpresponse"]["responsecode"]==400){
     				kony.print("\nError in updateAudience:-\n"+ JSON.stringify(result));
-    				alert("unable to process please try later.");
+    				alert("Audience member already exists with this email/Mobile.");
     				return;
     			}else if(result["httpresponse"]["responsecode"]==200){
     				kony.print("\n result:-"+JSON.stringify(result));
@@ -44,7 +44,7 @@ function updateAudience(){
     	}
     	kony.application.dismissLoadingScreen();
     }
-  	var payload0='{'
+  	/*var payload0='{'
   		+'"ksid":2380599554376807948,' 
   		+'"lastName" :"kumar",'
   		+'"email" : "abc@kony.com",'
@@ -54,7 +54,7 @@ function updateAudience(){
   		+'"smsSubscription" : false,'
   		+'"emailSubscription": false,'
   		+'"pushSubscription":true'
-  		+'}';
+  		+'}';*/
   		audienceStatus=true;
   		//ksid=12345;	
   		/*audienceStatus=true;

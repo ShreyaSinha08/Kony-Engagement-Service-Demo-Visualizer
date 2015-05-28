@@ -106,8 +106,8 @@ function geoPosition()
 		kony.application.dismissLoadingScreen();
 	}
 	//var positionoptions1={};
-	//var positionoptions=new Object();
-	var positionoptions={};
+	var positionoptions=new Object();
+	//var positionoptions={};
 	positionoptions.enablehighaccuracy=true;
 	positionoptions.timeout=10000;
 	positionoptions.maximumage=1000;
