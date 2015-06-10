@@ -7,7 +7,8 @@ emailStatusBefore=false;
 pushStatusBefore=false;
 initialReg=false;
 emailReg=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
-mobReg=/^\+[1-9]{1}[0-9]{6,14}$/; 
+//mobReg=/^\+[1-9]{1}[0-9]{6,14}$/; 
+mobReg=/^(\+)(\d{1,3})(\d{10})$/;
 
 /**
  * Name		:	registerAudience

@@ -61,6 +61,7 @@
     <attributes name="WP8_ID_CAP_MICROPHONE" value="true"/>
     <attributes name="wp8packageauthorkey" value=""/>
     <attributes name="windowsloadindicatorkey" value="true"/>
+    <attributes name="UseOpenSSLLibrary" value="false"/>
     <attributes name="READ_HISTORY_BOOKMARKS" value="false"/>
     <attributes name="WP8_ID_CAP_VOIP" value="true"/>
     <attributes name="androidmapkey" value=""/>
@@ -134,6 +135,7 @@
     <attributes name="ipadlandscapemodekey" value="false"/>
     <attributes name="tcnth400basefontsize" value="14"/>
     <attributes name="schemekey" value=""/>
+    <attributes name="UseSQLCipherFIPS" value="false"/>
     <attributes name="win8lockscreennotificationskey" value="Not set"/>
     <attributes name="win8versionmajorkey" value="1"/>
     <attributes name="andapplicationtags" value=""/>
@@ -223,8 +225,9 @@
     <attributes name="WP8_ID_CAP_CONTACTS" value="true"/>
     <attributes name="Location" value="true"/>
     <attributes name="cloud_env_GUID" value="f624671f-9244-42e8-a143-809a3e0e7aaf"/>
+    <attributes name="manifest_tag_attrs" value=""/>
     <attributes name="ACCESS_SURFACE_FLINGER" value="false"/>
-    <attributes name="currentgaversion" value="6.0.2.GA_v201502111356"/>
+    <attributes name="currentgaversion" value="6.0.3.GA_v201503251356"/>
     <attributes name="mwhttpsportkey" value="443"/>
     <attributes name="pathkey" value=""/>
     <attributes name="vendornamekey" value="KonyLabs"/>
@@ -277,7 +280,7 @@
     <attributes name="tileUpdateRecurrenceKey" value=""/>
     <attributes name="deeplinkkey" value="None"/>
     <attributes name="READ_LOGS" value="false"/>
-    <attributes name="andtargetsdkkey" value="4.2"/>
+    <attributes name="andtargetsdkkey" value="4.4"/>
     <attributes name="WRITE_GSERVICES" value="false"/>
     <attributes name="wp8packageversionkey" value=""/>
     <attributes name="CHANGE_CONFIGURATION" value="false"/>
@@ -305,7 +308,7 @@
     <attributes name="enablefocushtml5iphonbb" value="false"/>
     <attributes name="access_phone" value="false"/>
     <attributes name="win8packagepublichernamekey" value="Kony"/>
-    <attributes name="andmaxsdkkey" value="None"/>
+    <attributes name="andmaxsdkkey" value="4.4"/>
     <attributes name="wp8iconcountnotificationkey" value="false"/>
     <attributes name="READ_SYNC_SETTINGS" value="false"/>
     <attributes name="statusBarStyle" value="STATUS_BAR_STYLE_DEFAULT"/>

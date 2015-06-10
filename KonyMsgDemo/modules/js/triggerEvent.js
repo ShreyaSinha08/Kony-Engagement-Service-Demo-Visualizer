@@ -122,16 +122,6 @@ function checkEvent(){
 
 function triggerEvent()
 {
-	/*ksid=12345;
-	audienceLastName="kumar";
-	audienceEmail	="email";	
-	audienceStatus=true;
-	audienceFirstName="firstname";
-	audienceMob="12345";
-	audienceSmsSubs=true;
-	audienceEmailSubs=true;
-	audiencePushSubs=true;
-	audienceID=1;*/
 	if(frmEvent.txtBoxEventId.text==null||frmEvent.txtBoxEventId.text=="")
 	{
 		alert("please enter event ID");
@@ -170,16 +160,11 @@ function triggerEvent()
     				frmEvent.lblInfo2.setVisibility(false);
     			}else if(result["httpresponse"]["responsecode"]==200){
     				kony.print("\n result:-"+JSON.stringify(result));
-    				frmEvent.lblInfo2.setVisibility(true);
-    				/*
-    				if(result["event"]!=undefined && result["event"]["messageResponse"]!=undefined &&result["event"]["messageResponse"]["description"]!=undefined)
-    				{
-    					kony.print("\n\n----event response----\n"+result["event"]["messageResponse"]["description"]);
+    				if(result["event"]["messageResponse"]["code"]==200)
+    				{	
     					frmEvent.lblInfo2.setVisibility(true);
-    				}else if(result["event"]!=undefined && result["event"]["messageResponse"]!=undefined &&result["event"]["messageResponse"]["code"]!=undefined){
-    					kony.print('\n\n--Error while getting result["event"]["messageResponse"]["description"]'+result["event"]["messageResponse"]["description"]);
-    					frmEvent.lblInfo2.setVisibility(false);
-    				}*/
+    				}
+    					alert(result["event"]["messageResponse"]["description"]);
     			}
     			kony.application.dismissLoadingScreen();
     	}

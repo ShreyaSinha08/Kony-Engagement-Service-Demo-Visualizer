@@ -3443,7 +3443,7 @@
                             <seqname></seqname>
                         </evtSequence>
                     </android_onBeginEditing>
-                    <android_placeHoler>Skin Defaults</android_placeHoler>
+                    <android_placeHoler>sknTbxKonyThemeLogin</android_placeHoler>
                     <spa_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</spa_containerHeightMode>
                     <spa_blockedUI>Skin Defaults</spa_blockedUI>
                     <tc_blockedUI>Skin Defaults</tc_blockedUI>
@@ -4044,8 +4044,10 @@
                     <placeholder>First Name</placeholder>
                     <placeholder_I18N></placeholder_I18N>
                     <keyboard_type>0</keyboard_type>
+                    <overrideProperties>KTextBox2.android_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.ipad_containerHeightMode</overrideProperties>
                     <overrideProperties>KTextBox2.iphone_containerHeightMode</overrideProperties>
+                    <overrideProperties>KTextBox2.iphone_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.spa_containerHeightMode</overrideProperties>
                     <onTextChange>
                         <evtSequence>
@@ -4053,8 +4055,8 @@
                             <seqname></seqname>
                         </evtSequence>
                     </onTextChange>
-                    <parent_placeholderSkin>None</parent_placeholderSkin>
-                    <iphone_placeholderSkin>Skin Defaults</iphone_placeholderSkin>
+                    <parent_placeholderSkin>sknTbxKonyThemeLogin</parent_placeholderSkin>
+                    <iphone_placeholderSkin>sknTbxKonyThemeLogin</iphone_placeholderSkin>
                     <iphone_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</iphone_containerHeightMode>
                     <iphone_showProgressIndicator>true</iphone_showProgressIndicator>
                     <iphone_paste_board>1</iphone_paste_board>
@@ -5197,7 +5199,7 @@
                             <seqname></seqname>
                         </evtSequence>
                     </android_onBeginEditing>
-                    <android_placeHoler>Skin Defaults</android_placeHoler>
+                    <android_placeHoler>sknTbxKonyThemeLogin</android_placeHoler>
                     <spa_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</spa_containerHeightMode>
                     <spa_blockedUI>Skin Defaults</spa_blockedUI>
                     <tc_blockedUI>Skin Defaults</tc_blockedUI>
@@ -5798,8 +5800,10 @@
                     <placeholder>Last Name</placeholder>
                     <placeholder_I18N></placeholder_I18N>
                     <keyboard_type>0</keyboard_type>
+                    <overrideProperties>KTextBox2.android_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.ipad_containerHeightMode</overrideProperties>
                     <overrideProperties>KTextBox2.iphone_containerHeightMode</overrideProperties>
+                    <overrideProperties>KTextBox2.iphone_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.spa_containerHeightMode</overrideProperties>
                     <onTextChange>
                         <evtSequence>
@@ -5807,8 +5811,8 @@
                             <seqname></seqname>
                         </evtSequence>
                     </onTextChange>
-                    <parent_placeholderSkin>None</parent_placeholderSkin>
-                    <iphone_placeholderSkin>Skin Defaults</iphone_placeholderSkin>
+                    <parent_placeholderSkin>sknTbxKonyThemeLogin</parent_placeholderSkin>
+                    <iphone_placeholderSkin>sknTbxKonyThemeLogin</iphone_placeholderSkin>
                     <iphone_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</iphone_containerHeightMode>
                     <iphone_showProgressIndicator>true</iphone_showProgressIndicator>
                     <iphone_paste_board>1</iphone_paste_board>
@@ -6951,7 +6955,7 @@
                             <seqname></seqname>
                         </evtSequence>
                     </android_onBeginEditing>
-                    <android_placeHoler>Skin Defaults</android_placeHoler>
+                    <android_placeHoler>sknTbxKonyThemeLogin</android_placeHoler>
                     <spa_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</spa_containerHeightMode>
                     <spa_blockedUI>Skin Defaults</spa_blockedUI>
                     <tc_blockedUI>Skin Defaults</tc_blockedUI>
@@ -7552,8 +7556,10 @@
                     <placeholder>E-mail Address</placeholder>
                     <placeholder_I18N></placeholder_I18N>
                     <keyboard_type>0</keyboard_type>
+                    <overrideProperties>KTextBox2.android_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.ipad_containerHeightMode</overrideProperties>
                     <overrideProperties>KTextBox2.iphone_containerHeightMode</overrideProperties>
+                    <overrideProperties>KTextBox2.iphone_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.spa_containerHeightMode</overrideProperties>
                     <onTextChange>
                         <evtSequence>
@@ -7561,8 +7567,8 @@
                             <seqname></seqname>
                         </evtSequence>
                     </onTextChange>
-                    <parent_placeholderSkin>None</parent_placeholderSkin>
-                    <iphone_placeholderSkin>Skin Defaults</iphone_placeholderSkin>
+                    <parent_placeholderSkin>sknTbxKonyThemeLogin</parent_placeholderSkin>
+                    <iphone_placeholderSkin>sknTbxKonyThemeLogin</iphone_placeholderSkin>
                     <iphone_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</iphone_containerHeightMode>
                     <iphone_showProgressIndicator>true</iphone_showProgressIndicator>
                     <iphone_paste_board>1</iphone_paste_board>
@@ -8705,7 +8711,7 @@
                             <seqname></seqname>
                         </evtSequence>
                     </android_onBeginEditing>
-                    <android_placeHoler>Skin Defaults</android_placeHoler>
+                    <android_placeHoler>sknTbxKonyThemeLogin</android_placeHoler>
                     <spa_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</spa_containerHeightMode>
                     <spa_blockedUI>Skin Defaults</spa_blockedUI>
                     <tc_blockedUI>Skin Defaults</tc_blockedUI>
@@ -9306,8 +9312,10 @@
                     <placeholder>Mobile Number</placeholder>
                     <placeholder_I18N></placeholder_I18N>
                     <keyboard_type>0</keyboard_type>
+                    <overrideProperties>KTextBox2.android_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.ipad_containerHeightMode</overrideProperties>
                     <overrideProperties>KTextBox2.iphone_containerHeightMode</overrideProperties>
+                    <overrideProperties>KTextBox2.iphone_placeholderSkin</overrideProperties>
                     <overrideProperties>KTextBox2.spa_containerHeightMode</overrideProperties>
                     <onTextChange>
                         <evtSequence>
@@ -9315,8 +9323,8 @@
                             <seqname></seqname>
                         </evtSequence>
                     </onTextChange>
-                    <parent_placeholderSkin>None</parent_placeholderSkin>
-                    <iphone_placeholderSkin>Skin Defaults</iphone_placeholderSkin>
+                    <parent_placeholderSkin>sknTbxKonyThemeLogin</parent_placeholderSkin>
+                    <iphone_placeholderSkin>sknTbxKonyThemeLogin</iphone_placeholderSkin>
                     <iphone_containerHeightMode>TEXTBOX_DEFAULT_PLATFORM_HEIGHT</iphone_containerHeightMode>
                     <iphone_showProgressIndicator>true</iphone_showProgressIndicator>
                     <iphone_paste_board>1</iphone_paste_board>

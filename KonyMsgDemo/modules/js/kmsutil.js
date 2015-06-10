@@ -13,6 +13,7 @@ var opSystem;
 var isPushSubs=false;
 var firstRegister;
 var isDeleteAudience;
+var nameRegExp=/[\W]/i;
 /**
 ****************************************************************
 *	Name    : editAudience2
@@ -399,11 +400,19 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
   	if(frmProfile.txtBoxFname.text==null|| frmProfile.txtBoxFname.text==""){
   		alert("please enter first name");
   		return;
+  	}else if(nameRegExp.test(frmProfile.txtBoxFname.text))
+  	{
+  			alert("invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxFname.text)+"'");
+  			return;
   	}
    //	audienceLastName=frmProfile.txtBoxLname.text;
    	if(frmProfile.txtBoxLname.text==null || frmProfile.txtBoxLname.text==""){
   		alert("please enter last name");
   		return;
+  	}else if(nameRegExp.test(frmProfile.txtBoxLname.text))
+  	{
+  			alert("invalid character "+nameRegExp.exec(frmProfile.txtBoxLname.text));
+  			return;
   	}
    	//audienceEmail=frmProfile.txtBoxEmail.text;
    	if(frmProfile.txtBoxEmail.text==null|| frmProfile.txtBoxEmail.text==""){
@@ -422,7 +431,7 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
   		alert("please enter valid mobile number with country code");
   		return;
   	}
-  	kony.print("\n"+audienceFirstName);
+  	/*kony.print("\n"+audienceFirstName);
   	kony.print("\n"+audienceLastName);
   	kony.print("\n"+audienceEmail);
   	kony.print("\n"+audienceMob);
@@ -431,7 +440,7 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
   	kony.print("\nforms");
   	kony.print("\n"+frmProfile.txtBoxFname.text);
   	kony.print("\n"+frmProfile.txtBoxLname.text);
-  	kony.print("\n"+frmProfile.txtBoxEmail.text);
+  	kony.print("\n"+frmProfile.txtBoxEmail.text);*/
 	if((audienceFirstName ==frmProfile.txtBoxFname.text) && (audienceLastName == frmProfile.txtBoxLname.text) && (audienceEmail==frmProfile.txtBoxEmail.text) && (audienceMob==frmProfile.txtBoxMob.text)&&(audienceEmailSubs==emailStatusBefore)&&( audienceSmsSubs==smsStatusBefore)&&(audiencePushSubs == pushStatusBefore))
     {
     	if(firstRegister==true){

@@ -15,7 +15,6 @@
     <container isflex="false" displayname="Form" id="frmSetting" type="form">
         <component displayname="TextBox2" id="txtBoxurl1" type="textbox2"/>
     </container>
-    <container isflex="false" displayname="Form" id="frmTest" type="form"/>
     <container isflex="false" displayname="Form" id="frmUrl" type="form"/>
     <container isflex="false" displayname="Popup" id="infoPopup" type="dialog"/>
     <container isflex="false" displayname="Popup" id="optionPopup" type="dialog"/>
