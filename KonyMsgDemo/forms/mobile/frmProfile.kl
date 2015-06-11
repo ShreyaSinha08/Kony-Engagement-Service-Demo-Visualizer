@@ -636,6 +636,27 @@
         <headerId>None</headerId>
         <footerId>None</footerId>
         <title>My Profile</title>
+        <preShow_root>
+            <evtSequence>
+                <actionList xsi:type="eventExpressionAction">
+                    <enabled>true</enabled>
+                    <name></name>
+                    <type>5</type>
+                    <expr></expr>
+                    <exprMap>
+                        <entry>
+                            <key>js</key>
+                            <value>frmProfile.txtBoxFname=audienceFirstName;
+frmProfile.txtBoxLname=audienceLastName;
+frmProfile.txtBoxEmail=audienceEmail;
+frmProfile.txtBoxMob=audienceMob;</value>
+                        </entry>
+                    </exprMap>
+                </actionList>
+                <enabled>true</enabled>
+                <seqname></seqname>
+            </evtSequence>
+        </preShow_root>
         <init>
             <evtSequence>
                 <enabled>true</enabled>

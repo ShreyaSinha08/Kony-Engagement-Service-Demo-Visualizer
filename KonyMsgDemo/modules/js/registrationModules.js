@@ -222,37 +222,11 @@ function setpreferences(){
 
 
 function preAppinit(){
-	/*	
-		kony.store.setItem("KSID",ksid);
-		KMSPROP.kmsServerUrl=frmUrl.txtBoxUrl.text;
-		kony.store.setItem("KMSURL",KMSPROP.kmsServerUrl);
-		kony.store.setItem("AUDIENCE_FIRSTNAME", audienceFirstName);
-    	kony.store.setItem("AUDIENCE_LASTNAME", audienceLastName);
-    	kony.store.setItem("AUDIENCE_EMAIL", audienceEmail);
-    	kony.store.setItem("AUDIENCE_MOB", audienceMob);
-    	kony.store.setItem("AUDIENCE_STATUS", audienceStatus);
-    	kony.store.setItem("AUDIENCE_SMS_SUBSCRIPTION", audienceSmsSubs);
-    	kony.store.setItem("AUDIENCE_EMAIL_SUBSCRIPTION", audienceEmailSubs);
-    	kony.store.setItem("AUDIENCE_PUSH_SUBSCRIPTION", audiencePushSubs);*/
-
-
 
 	ksid = kony.store.getItem("KSID");
-   /* audienceFirstName    =		kony.store.getItem("AUDIENCE_FIRSTNAME");
-    audienceLastName  	 =		kony.store.getItem("AUDIENCE_LASTNAME");
-    audienceEmail     	 =		kony.store.getItem("AUDIENCE_EMAIL");
-    audienceMob       	 =		kony.store.getItem("AUDIENCE_MOB");
-    audienceStatus    	 =		kony.store.getItem("AUDIENCE_STATUS");
-    audienceSmsSubs    	 =		kony.store.getItem("AUDIENCE_SMS_SUBSCRIPTION");
-    audienceEmailSubs 	 =		kony.store.getItem("AUDIENCE_EMAIL_SUBSCRIPTION");
-    audiencePushSubs  	 =		kony.store.getItem("AUDIENCE_PUSH_SUBSCRIPTION");
-    registrationID		 =      kony.store.getItem("REGISTRATIONID");
-    opSystem			 =		kony.store.getItem("OSTYPE");
-    isPushSubs			 =		audiencePushSubs;*/
     isDeleteAudience=false;
-      kony.print("\n ksid-->"+ksid);
-      kony.print("\nKMSPROP.kmsServerUrl-->"+KMSPROP.kmsServerUrl);
-    //  kony.print("\naudienceID-->"+audienceID);
+    kony.print("\n ksid-->"+ksid);
+    kony.print("\nKMSPROP.kmsServerUrl-->"+KMSPROP.kmsServerUrl);
       if(kony.os.deviceInfo().name=="iPhone")
       	   locate_iBeacons();
     if(ksid!=null){
@@ -292,6 +266,8 @@ function preAppinit(){
       		emailStatusBefore=true;
      	}
      	frmPreference.checkBxPreference.selectedKeys=arr;
+     	if(kony.os.deviceInfo().name == "iPhone")
+     		kony.application.setApplicationBadgeValue(kony.os.toNumber("0"));
 		//setpreferences();
 		if(audienceFirstName==null){
 			audiencePushSubs=true;
@@ -302,7 +278,11 @@ function preAppinit(){
         return frmHome;
     }   
    else{
-   kony.print("entered without ksid");
+   	audienceFirstName="";
+	audienceLastName="";
+	audienceEmail="";
+	audienceMob="";
+    kony.print("entered without ksid");
     return  frmOption;
     }
 }

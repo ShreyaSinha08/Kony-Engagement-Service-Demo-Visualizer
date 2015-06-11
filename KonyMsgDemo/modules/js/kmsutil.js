@@ -110,16 +110,6 @@ function initForm(){
     initForm();
 }*/
 function getAudience(){
-	kony.print("\n in getAudience()----\n");
-	function asyncCallback(status, result) 
-	{
-    	kony.print("\n------status------>"+status);
-    	kony.print("\n----result------>"+JSON.stringify(result));
-    	if(status==400 && result["httpresponse"]!=undefined)
-    	{
-    		if(result["httpresponse"]["responsecode"]==400)
-    		{
-    			kony.print("\nNo Audience Member found mapping to the given KSID or Audience Id" );
     			// register audience.
 				audienceStatus=true;
     			audienceFirstName="";
@@ -129,49 +119,11 @@ function getAudience(){
     			audiencePushSubs=true;
     			audienceEmailSubs=true;
     			audienceMob="";
-    			audienceID=null;
-    			//frmTest.textArea1.text=frmTest.textArea1.text+JSON.stringify(result);
-    		}else if(result["httpresponse"]["responsecode"]==200)
-    		{
-    			kony.print("\n result:-"+JSON.stringify(result));
-    			audienceID=result["id"];
-    			audienceStatus=result["active"];
-    			audienceFirstName=result["firstName"];
-    			audienceLastName=result["lastName"];
-    			audienceEmail=result["email"];
-    			audienceSmsSubs=result["smsSubscription"];
-    			audiencePushSubs=result["pushSubscription"];
-    			audienceEmailSubs=result["emailSubscription"];
-    			audienceMob=result["mobileNumber"];
-    			//frmTest.textArea1.text=frmTest.textArea1.text+JSON.stringify(result);
-    		}else if(result["errmsg"]!=undefined){
-    			alert(result["errmsg"]);
-    			kony.application.dismissLoadingScreen();
-    			//frmTest.textArea1.text=frmTest.textArea1.text+JSON.stringify(result);
-    			return;
-    		}
-    		initForm();
-    		kony.application.dismissLoadingScreen();
-    	}
-    }
-	var inputParamTable={
-			httpconfig:{method:"get"}
-			//channel:"rc"
-    };
-    try{
-		var url="http://10.10.12.64:8282/kpns/api/v1/subscribeaudience/"+ksid;
-		//var url="http://10.10.12.64:8282/kpns/api/v1/subscribeaudience/4029879316224150205";
-		//var url="http://kms-demo.messaging.qa-konycloud.com/api/v1/subscribeaudience/9200691420904025925";
-	   	kony.print("\nurl-->"+url);
-	   	kony.print("\n ipTable-->"+JSON.stringify(inputParamTable));
-	   	kony.application.showLoadingScreen("sknLoading","loading details...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
-	   	var connHandle = kony.net.invokeServiceAsync(
-                        url,inputParamTable,asyncCallback);
-	}catch(err){
-    	kony.print("\nexeption in invoking service---\n"+JSON.stringify(err));
-		alert("Error"+err);
-		kony.application.dismissLoadingScreen();
-    }	
+    			if(typeof audienceFirstName)
+    			frmProfile.txtBoxFname=audienceFirstName;
+		frmProfile.txtBoxLname=audienceLastName;
+		frmProfile.txtBoxEmail=audienceEmail;
+		frmProfile.txtBoxMob=audienceMob;
 }
 
 /**
