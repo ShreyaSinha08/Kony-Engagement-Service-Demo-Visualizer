@@ -206,39 +206,11 @@ function pushPrefUnSubs(){
 **/
 function updateDeatils()
 {
-	/*audienceFirstName=frmProfile.txtBoxFname.text;
-  	if(audienceFirstName==null||audienceFirstName==""){
-  	alert("please enter first name");
-  	return;
-  	}
-   	audienceLastName=frmProfile.txtBoxLname.text;
-   	if(audienceLastName==null||audienceLastName==""){
-  	alert("please enter last name");
-  	return;
-  	}
-   	audienceEmail=frmProfile.txtBoxEmail.text;
-   	if(audienceEmail==null|| audienceEmail==""){
-  		alert("please enter email id");
-  		return;
-  	}else if(emailReg.test(audienceEmail)==false){
-  			alert("please enter valid email..");
-  			return;
-  	}
-   	audienceMob=frmProfile.txtBoxMob.text;
-   	if(audienceMob==null||audienceMob==""){
-  	alert("please enter mobile number");
-  	return;
-  	}else if(mobReg.test(audienceMob)==false)
-  	{
-  		alert("please enter valid mobile number with country code");
-  		return;
-  	}*/
-  //	kony.application.showLoadingScreen("sknLoading","please wait..",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
 	kony.print("\nksid->"+ksid);
 	if((isPushSubs==false) && (audiencePushSubs==true))
 	{
 		if(kony.os.deviceInfo().name=="iPhone Simulator"){
-			alert("push doesn't support in iPhone simulator.");
+			alert("Push doesn't support in iPhone simulator.");
 			return;
 		}else{
 			updatePushSubscription();

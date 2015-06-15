@@ -638,20 +638,23 @@
         <title>My Profile</title>
         <preShow_root>
             <evtSequence>
-                <actionList xsi:type="eventExpressionAction">
+                <actionList xsi:type="eventFunctionAction">
                     <enabled>true</enabled>
                     <name></name>
-                    <type>5</type>
-                    <expr></expr>
-                    <exprMap>
+                    <type>6</type>
+                    <functionName>None</functionName>
+                    <functionNameMap>
                         <entry>
                             <key>js</key>
-                            <value>frmProfile.txtBoxFname=audienceFirstName;
-frmProfile.txtBoxLname=audienceLastName;
-frmProfile.txtBoxEmail=audienceEmail;
-frmProfile.txtBoxMob=audienceMob;</value>
+                            <value>frmProfilePreShow</value>
                         </entry>
-                    </exprMap>
+                    </functionNameMap>
+                    <paramDataMap>
+                        <entry>
+                            <key>js</key>
+                            <value/>
+                        </entry>
+                    </paramDataMap>
                 </actionList>
                 <enabled>true</enabled>
                 <seqname></seqname>

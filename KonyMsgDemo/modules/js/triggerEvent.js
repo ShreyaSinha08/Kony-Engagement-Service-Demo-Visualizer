@@ -1,12 +1,12 @@
 var eventID;
 function checkEvent(){
 	if(frmEvent.txtBoxEventId.text==null){
-       alert("please enter Event Id");
+       alert("Please enter Event Id");
   	  return;
      }
      eventID=(frmEvent.txtBoxEventId.text).trim();
      if(eventID==""){
-     	alert("please enter Event Id");
+     	alert("Please enter Event Id");
   	  	return;
   	  }
   	  //eventID=frmEvent.txtBoxEventId.text;
@@ -19,7 +19,7 @@ function checkEvent(){
     		if(result.errcode!=undefined||result.errmsg!=undefined)
     		{
     				kony.print("error message:");
-    				alert("unable to trigger this event..");
+    				alert("Unable to trigger this event..");
     				kony.application.dismissLoadingScreen();
     				return;
     		}else
@@ -124,7 +124,7 @@ function triggerEvent()
 {
 	if(frmEvent.txtBoxEventId.text==null||frmEvent.txtBoxEventId.text=="")
 	{
-		alert("please enter event ID");
+		alert("Please enter event ID");
 		return;
 	}
 	var payload1={

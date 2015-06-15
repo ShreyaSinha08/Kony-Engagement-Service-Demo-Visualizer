@@ -88,7 +88,7 @@ function resetDemo(){
     			pushStatusBefore=null;
     			isPushSubs=false;
     		}else{
-    			updateMessaageAlert("unable to process please try later..");
+    			updateMessaageAlert("Unable to process please try later..");
     			kony.print("\n------updated result--->"+JSON.stringify(result));
     		}
     		/*

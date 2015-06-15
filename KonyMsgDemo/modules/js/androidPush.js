@@ -21,7 +21,6 @@ function callbackAndroidSetCallbacks()
  	kony.push.setCallbacks({onsuccessfulregistration: regSuccessAndroidCallback, onfailureregistration: regFailureAndroidCallback,
  						    onlinenotification: onlinePushNotificationAndroidCallback, offlinenotification: offlinePushNotificationAndroidCallback,
  						    onsuccessfulderegistration: unregSuccessAndroidCallback, onfailurederegistration:unregFailureAndroidCallback });
- //	alert("setCallBack Done !!!");
 }
 /**
  * Name		:	regSuccessAndroidCallback

@@ -639,14 +639,14 @@
         <preShow_root>
             <evtSequence>
                 <actionList xsi:type="eventExpressionAction">
-                    <enabled>false</enabled>
+                    <enabled>true</enabled>
                     <name></name>
                     <type>5</type>
                     <expr></expr>
                     <exprMap>
                         <entry>
                             <key>js</key>
-                            <value>frmEvent.lblEventID.text=KMSPROP.eventID;</value>
+                            <value>frmEvent.lblInfo2.setVisibility(false);</value>
                         </entry>
                     </exprMap>
                 </actionList>

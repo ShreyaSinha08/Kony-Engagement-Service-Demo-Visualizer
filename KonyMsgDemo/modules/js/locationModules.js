@@ -63,7 +63,7 @@ function updatedLoc1()
          	httpheaders:{
            		"Content-Type":"application/json"
            	},
-			channel:"rc",
+			//channel:"rc",
 			postdata:JSON.stringify(payload)
 	};
     var url=KMSPROP.kmsServerUrl+"/service/geolocupdate";

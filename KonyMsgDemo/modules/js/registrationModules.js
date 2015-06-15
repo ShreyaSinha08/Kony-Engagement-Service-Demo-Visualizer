@@ -15,7 +15,16 @@ mobReg=/^(\+)(\d{1,3})(\d{10})$/;
  * Author	:	Kony
  * Purpose	:	To get the user details to register as the audience member on the KMS.
 **/
-
+function frmProfilePreShow(){
+	kony.print("audienceFirstName-"+audienceFirstName);
+	kony.print("audienceLastName-"+audienceLastName);
+	kony.print("audienceEmail-"+audienceEmail);
+	kony.print("audienceMob-"+audienceMob);
+	frmProfile.txtBoxFname.text=audienceFirstName;
+	frmProfile.txtBoxLname.text=audienceLastName;
+	frmProfile.txtBoxEmail.text=audienceEmail;
+	frmProfile.txtBoxMob.text=audienceMob;
+}
 function registerAudience(){
   	audienceFirstName=frmProfile.txtBoxFname.text;
   	if(audienceFirstName==null||audienceFirstName==""){
@@ -24,24 +33,24 @@ function registerAudience(){
   	}
    	audienceLastName=frmProfile.txtBoxLname.text;
    	if(audienceLastName==null ||audienceLastName==""){
-  		alert("please enter last name");
+  		alert("Please enter last name");
   		return;
   	}
    	audienceEmail=frmProfile.txtBoxEmail.text;
    	if(audienceEmail==null||audienceEmail==""){
-  		alert("please enter email id");
+  		alert("Please enter email id");
   		return;
   	}else if(emailReg.test(audienceEmail)==false){
-  			alert("please enter valid email..");
+  			alert("Please enter valid email..");
   			return;
   	}
    	audienceMob=frmProfile.txtBoxMob.text;
    	if(audienceMob==null||audienceMob==""){
-  		alert("please enter mobile number");
+  		alert("Please enter mobile number");
   		return;
   	}else if(mobReg.test(audienceMob)==false)
   	{
-  		alert("please enter valid mobile number with country code");
+  		alert("Please enter valid mobile number with country code");
   		return;
   	}
   	//frmPreference.show();
@@ -83,7 +92,7 @@ function register(){
     				return;
     			}*/
     			else{
-    				updateMessaageAlert("email/mobile already registered");
+    				updateMessaageAlert("Email/mobile already registered");
     			 	//kony.print("message is...... "+result["message"]);
     				kony.application.dismissLoadingScreen();
     				return;
@@ -106,7 +115,7 @@ function register(){
     			kony.application.dismissLoadingScreen();
     		}
     		else{
-    			updateMessaageAlert("unable to process please try later..");
+    			updateMessaageAlert("Unable to process please try later..");
     			//kony.application.dismissLoadingScreen();
     			return;
     		}
@@ -227,8 +236,11 @@ function preAppinit(){
     isDeleteAudience=false;
     kony.print("\n ksid-->"+ksid);
     kony.print("\nKMSPROP.kmsServerUrl-->"+KMSPROP.kmsServerUrl);
-      if(kony.os.deviceInfo().name=="iPhone")
+      if(kony.os.deviceInfo().name=="iPhone"){
+      		
       	   locate_iBeacons();
+      	  }
+      	  callbackiPhoneSetCallbacks();
     if(ksid!=null){
        kony.print("entered with ksid & audience ID");
        //ipurl=kmsUrl.substring(8);
@@ -266,8 +278,7 @@ function preAppinit(){
       		emailStatusBefore=true;
      	}
      	frmPreference.checkBxPreference.selectedKeys=arr;
-     	if(kony.os.deviceInfo().name == "iPhone")
-     		kony.application.setApplicationBadgeValue(kony.os.toNumber("0"));
+     	
 		//setpreferences();
 		if(audienceFirstName==null){
 			audiencePushSubs=true;

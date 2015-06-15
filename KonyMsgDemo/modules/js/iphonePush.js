@@ -23,6 +23,7 @@ function callbackiPhoneSetCallbacks()
 							onsuccessfulderegistration: unregSuccessiPhoneCallback,onfailurederegistration: unregFailureiPhoneCallback };
 		kony.push.setCallbacks(callbacksTable);
 		//alert("setCallBack Done !!!");
+	//setApplicationCallBacks();
 }
 /**
  * Name		:	regSuccessiPhoneCallback
@@ -81,9 +82,12 @@ function onlinePushNotificationiPhoneCallback(msg)
 function offlinePushNotificationiPhoneCallback(msg)
 {
 	kony.print("************ JS offlinePushNotificationCallback() called *********");
-	alert("Message: "+msg["alert"]);
+	//alert("Message: "+msg["alert"]);
 	kony.print("\n received push:-"+JSON.stringify(msg));
 	kony.print(msg);
+	 if(kony.os.deviceInfo().name=="iPhone"){
+      		kony.application.setApplicationBadgeValue("0");
+      	}
 }
 /**
  * Name		:	unregSuccessiPhoneCallback

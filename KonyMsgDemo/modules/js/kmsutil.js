@@ -38,12 +38,12 @@ function editAudience2(){
     			if(result["message"]!=undefined)
     				updateMessaageAlert(""+result["message"]);
     			else if(result["errmsg"]!=undefined){
-    				updateMessaageAlert("email/mobile already registered");
+    				updateMessaageAlert("Email/mobile already registered");
     			}
     			//updateMessaageAlert(""+result["errmsg"]);
     			kony.print("\n------updated result--->"+JSON.stringify(result));
     		}else{
-    			updateMessaageAlert("unable to process please try later..");
+    			updateMessaageAlert("Unable to process please try later..");
     			kony.print("\n------updated result--->"+JSON.stringify(result));
     		}
     		kony.application.dismissLoadingScreen();
@@ -342,7 +342,7 @@ function unSubscribePushSubscription(){
                         pushSubscUrl,inputParamTable,asyncCallback);
 	}catch(err){
      	kony.print("\nexception in invoking service---\n"+JSON.stringify(err));
-	  	alert("Error"+err);
+	  	alert("Error "+err);
 	  	kony.application.dismissLoadingScreen();
     }
 }
@@ -350,37 +350,37 @@ function updatePushSubscription(){
 kony.print("\n\n ------------in updatePushSubscription--------------------\n");
 //audienceFirstName=frmProfile.txtBoxFname.text;
   	if(frmProfile.txtBoxFname.text==null|| frmProfile.txtBoxFname.text==""){
-  		alert("please enter first name");
+  		alert("Please enter first name");
   		return;
   	}else if(nameRegExp.test(frmProfile.txtBoxFname.text))
   	{
-  			alert("invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxFname.text)+"'");
+  			alert("Invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxFname.text)+"'");
   			return;
   	}
    //	audienceLastName=frmProfile.txtBoxLname.text;
    	if(frmProfile.txtBoxLname.text==null || frmProfile.txtBoxLname.text==""){
-  		alert("please enter last name");
+  		alert("Please enter last name");
   		return;
   	}else if(nameRegExp.test(frmProfile.txtBoxLname.text))
   	{
-  			alert("invalid character "+nameRegExp.exec(frmProfile.txtBoxLname.text));
+  			alert("Invalid character "+nameRegExp.exec(frmProfile.txtBoxLname.text));
   			return;
   	}
    	//audienceEmail=frmProfile.txtBoxEmail.text;
    	if(frmProfile.txtBoxEmail.text==null|| frmProfile.txtBoxEmail.text==""){
-  		alert("please enter email id");
+  		alert("Please enter email id");
   		return;
   	}else if(emailReg.test(frmProfile.txtBoxEmail.text)==false){
-  			alert("please enter valid email..");
+  			alert("Please enter valid email..");
   			return;
   	}
    	//audienceMob=frmProfile.txtBoxMob.text;
    	if(frmProfile.txtBoxMob.text==null|| frmProfile.txtBoxMob.text==""){
-  		alert("please enter mobile number");
+  		alert("Please enter mobile number");
   		return;
   	}else if(mobReg.test(frmProfile.txtBoxMob.text)==false)
   	{
-  		alert("please enter valid mobile number with country code");
+  		alert("Please enter valid mobile number with country code");
   		return;
   	}
   	/*kony.print("\n"+audienceFirstName);
@@ -496,15 +496,6 @@ function pushSubscription(regId,ostype){
 					kony.store.setItem("KMSURL",KMSPROP.kmsServerUrl);
 					isPushSubs=true;
 					audiencePushSubs=true;
-					//var arr=[];
-					//arr.push("0");
-					//frmPreference.checkBxPreference.selectedKeys=arr;
-					//kony.print("\n\n--Now executing timer--\n\n");
-					//geoPosition();
-					//kony.timer.schedule("mytimer123",geoPosition,60, true);
-					//kony.store.setItem("kmsUrl", Value);
-					//frmTest.textArea1.text=frmTest.textArea1.text+JSON.stringify(result);
-					//getAudience();
 					kony.print("\npush subscription message:-"+result["subscriptionResponse"]["message"]);
 					frmProfile.show();
 				}else{
@@ -656,7 +647,7 @@ function unsubscribeKMS()
 					//alert("Device Unsubscribed to Kony Messaging service sucessfully..");
 				}
 			}else{
-				alert("unable to unsubscribe from KMS\nplease try later..");
+				alert("Unable to unsubscribe from KMS\nplease try later..");
 				//frmPreference.checkBxPreference
 			}
 		//	kony.application.dismissLoadingScreen();
@@ -730,10 +721,6 @@ function pushdeRegister()
  * Author	:	Kony
  * Purpose	:	To register the device to the GCM/APNS.
 **/
-function abc()
-{
-alert("abc");
-}
 function pushRegistration()
 {
 	kony.print("\n\n----in pushRegister----\n");
