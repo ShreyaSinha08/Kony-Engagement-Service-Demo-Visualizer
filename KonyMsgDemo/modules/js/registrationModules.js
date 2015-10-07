@@ -239,8 +239,9 @@ function preAppinit(){
       if(kony.os.deviceInfo().name=="iPhone"){
       		
       	   locate_iBeacons();
+      	   callbackiPhoneSetCallbacks();
       	  }
-      	  callbackiPhoneSetCallbacks();
+      	  
     if(ksid!=null){
        kony.print("entered with ksid & audience ID");
        //ipurl=kmsUrl.substring(8);
