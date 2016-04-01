@@ -13,16 +13,20 @@ mobReg=/^(\+)(\d{1,3})(\d{10})$/;
 /**
  * Name		:	registerAudience
  * Author	:	Kony
- * Purpose	:	To get the user details to register as the audience member on the KMS.
+ * Purpose	:	To get the user details to register as the User on the KMS.
 **/
 function frmProfilePreShow(){
-	kony.print("audienceFirstName-"+audienceFirstName);
+/*	kony.print("audienceFirstName-"+audienceFirstName);
 	kony.print("audienceLastName-"+audienceLastName);
 	kony.print("audienceEmail-"+audienceEmail);
-	kony.print("audienceMob-"+audienceMob);
+	kony.print("audienceMob-"+audienceMob); */
 	frmProfile.txtBoxFname.text=audienceFirstName;
 	frmProfile.txtBoxLname.text=audienceLastName;
 	frmProfile.txtBoxEmail.text=audienceEmail;
+	selectedCountry=audienceCountry;
+	selectedState=audienceState;
+	frmProfile.listbox5316540885527.selectedKey=audienceCountry;
+	frmProfile.txtBoxState.text=audienceState;
 	frmProfile.txtBoxMob.text=audienceMob;
 }
 function registerAudience(){
@@ -71,7 +75,7 @@ function registerAudience(){
 /**
  * Name		:	register
  * Author	:	Kony
- * Purpose	:	To register the user as an audience member on the KMS. 
+ * Purpose	:	To register the user as an User on the KMS. 
 **/
 function register(){
 	function asyncCallback(status, result){
@@ -192,7 +196,10 @@ function preferences(){
 		    kony.print("\naudienceSmsSubs---------------->"+audienceSmsSubs);
 		    kony.print("\naudienceEmailSubs---------------->"+audienceEmailSubs);
 		    kony.application.showLoadingScreen("sknLoading","updating..",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
-		   	updateDeatils();
+		    if(kony.os.deviceInfo().name=="android")
+		   	  updateAudienceIOS();
+		   	else
+		   	  updateAudienceIOS();
 		}
 		else{
 		   frmHome.show();
@@ -237,10 +244,14 @@ function preAppinit(){
     kony.print("\n ksid-->"+ksid);
     kony.print("\nKMSPROP.kmsServerUrl-->"+KMSPROP.kmsServerUrl);
       if(kony.os.deviceInfo().name=="iPhone"){
-      		
+      kony.print("\nsetting iPhone callbacks:\n");
       	   locate_iBeacons();
       	   callbackiPhoneSetCallbacks();
       	  }
+      else if(kony.os.deviceInfo().name=="android"){
+      	kony.print("\nsetting android callbacks:\n");
+      	callbackAndroidSetCallbacks();
+      }
       	  
     if(ksid!=null){
        kony.print("entered with ksid & audience ID");
@@ -249,6 +260,8 @@ function preAppinit(){
 		audienceFirstName    =		kony.store.getItem("AUDIENCE_FIRSTNAME");
     	audienceLastName  	 =		kony.store.getItem("AUDIENCE_LASTNAME");
     	audienceEmail     	 =		kony.store.getItem("AUDIENCE_EMAIL");
+    	audienceCountry      =		kony.store.getItem("AUDIENCE_COUNTRY");
+    	audienceState        =		kony.store.getItem("AUDIENCE_STATE");
     	audienceMob       	 =		kony.store.getItem("AUDIENCE_MOB");
     	audienceStatus    	 =		kony.store.getItem("AUDIENCE_STATUS");
    	 	audienceSmsSubs    	 =		kony.store.getItem("AUDIENCE_SMS_SUBSCRIPTION");
@@ -260,6 +273,8 @@ function preAppinit(){
 		KMSPROP.kmsServerUrl = kony.store.getItem("KMSURL");
 		frmProfile.txtBoxFname=audienceFirstName;
 		frmProfile.txtBoxLname=audienceLastName;
+		frmProfile.txtBoxCountry=audienceCountry;
+		frmProfile.txtBoxState=audienceState;
 		frmProfile.txtBoxEmail=audienceEmail;
 		frmProfile.txtBoxMob=audienceMob;
 		pushStatusBefore=true;
@@ -293,6 +308,8 @@ function preAppinit(){
    	audienceFirstName="";
 	audienceLastName="";
 	audienceEmail="";
+	audienceCountry="";
+	audienceState="";
 	audienceMob="";
     kony.print("entered without ksid");
     return  frmOption;

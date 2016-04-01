@@ -59,7 +59,66 @@ function onlinePushNotificationAndroidCallback(msg)
 {
 	kony.print("************ JS onlinePushNotificationCallback() called *********");
 	kony.print(JSON.stringify(msg));
+	if(msg["isRichPush"]!=undefined){
+		displayRichPush(msg);
+	}else
 	alert("Message: "+msg["content"]);
+}
+function displayRichPush(msg){
+//Defining basicConf parameter for alert
+	var basicConf = {
+		message: msg["content"],
+		alertType: constants.ALERT_TYPE_CONFIRMATION,
+		alertTitle:'"Rich Push Message"',yesLabel:"show",
+	noLabel:"skip","alertIcon": "conf.png", alertHandler: handle2};
+
+	//Defining pspConf parameter for alert
+	var pspConf = {};
+	//Alert definition
+	kony.ui.Alert(basicConf,pspConf);
+	//var infoAlert = kony.ui.Alert(basicConf,pspConf);
+	
+	function handle2(response)
+	{
+		kony.print(JSON.stringify(response));
+		var response = JSON.stringify(response);
+		if(response == "true")
+		{
+		  // getRichMsg(msg["mid"]);
+		   var url=KMSPROP.kmsServerUrl+"/api/v1/messages/rich/"+msg["mid"];
+		   kony.print("rich push url:-"+url);
+		  // var urlConf = {URL: url, requestMethod:constants.BROWSER_REQUEST_METHOD_GET};
+		   frmBrowser.txtBoxUrl.text=url;
+		   frmBrowser.browserRichPush.url=url;
+		   frmBrowser.show();
+		}
+		else
+		{
+		   return;
+		 }
+		
+	}
+}
+function getRichMsg(mid){
+	function asyncCallback(status,response){
+		if(status==400){
+		kony.print("\nRich text fetched successfully:-"+response);
+		//frmBrowser.browserRichPush.htmlString=response;
+		kony.application.dismissLoadingScreen();
+		}
+	}
+	var inputParamTable={httpconfig:{method:"GET"}};
+    var url=KMSPROP.kmsServerUrl+"/api/v1/messages/rich/"+mid;
+    kony.print("\n-----inputparamtable is"+JSON.stringify(inputParamTable));
+    kony.print("\n----url----->"+url) ; 
+    try{ 
+    kony.application.showLoadingScreen("sknLoading","updating...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+	   var connHandle = kony.net.invokeServiceAsync(
+                        url,inputParamTable,asyncCallback);
+	}catch(err){
+     	kony.print("\nexeption in invoking service---\n"+JSON.stringify(err));
+	  	alert("Error"+err);
+    }	
 }
 /**
  * Name		:	offlinePushNotificationAndroidCallback

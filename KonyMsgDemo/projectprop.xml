@@ -46,7 +46,7 @@
     <attributes name="apmgestureswipe" value="false"/>
     <attributes name="appaddrkey" value="https://api.kony.com/api/v1_0/environments/f624671f-9244-42e8-a143-809a3e0e7aaf/"/>
     <attributes name="appnamekey" value="KMSDemo"/>
-    <attributes name="currentgaversion" value="6.5.0.QA_v201507021118_r4"/>
+    <attributes name="currentgaversion" value="6.5.1.GA_v201507231955"/>
     <attributes name="SET_TIME" value="false"/>
     <attributes name="sessionmanager" value="Kony Session Manager"/>
     <attributes name="SYSTEM_ALERT_WINDOW" value="false"/>
@@ -243,7 +243,7 @@
     <attributes name="bb10urlscheme" value=""/>
     <attributes name="apppackagekey" value="com.kony.KonyMsgDemo"/>
     <attributes name="watchenabled" value="false"/>
-    <attributes name="andtargetsdkkey" value="4.4"/>
+    <attributes name="andtargetsdkkey" value="5.0"/>
     <attributes name="wp81sdescriptionkey" value="Sample Test Application"/>
     <attributes name="tcbjs240basefontsize" value="10"/>
     <attributes name="appversionkey" value="1.0.0"/>
@@ -274,7 +274,7 @@
     <attributes name="SIGNAL_PERSISTENT_PROCESSES" value="false"/>
     <attributes name="desktopwebbasefontsize" value="16"/>
     <attributes name="REORDER_TASKS" value="false"/>
-    <attributes name="andminsdkkey" value="2.2"/>
+    <attributes name="andminsdkkey" value="4.4"/>
     <attributes name="Proximity" value="true"/>
     <attributes name="androidscreenresizeable" value="false"/>
     <attributes name="GET_ACCOUNTS" value="true"/>
@@ -335,7 +335,7 @@
     <attributes name="tcandroid480basefontsize" value="16"/>
     <attributes name="WRITE_SETTINGS" value="false"/>
     <attributes name="statusBarHidden" value="false"/>
-    <attributes name="andmaxsdkkey" value="4.4"/>
+    <attributes name="andmaxsdkkey" value="None"/>
     <attributes name="tcnth240basefontsize" value="12"/>
     <attributes name="thinwebcontextkey" value=""/>
     <attributes name="access_sms_mms" value="false"/>
@@ -355,7 +355,7 @@
     <attributes name="tcbjs320basefontsize" value="10"/>
     <attributes name="APPLICATION_THEME" value="KonyTheme"/>
     <attributes name="wp8packagepublisheridkey" value=""/>
-    <attributes name="cloud_url" value="https://mobilefabric-demo.konycloud.com"/>
+    <attributes name="cloud_url" value="http://127.0.0.1:8080"/>
     <attributes name="disablehttpskey" value="false"/>
     <attributes name="Music_Library" value="true"/>
     <attributes name="Location" value="true"/>
@@ -385,10 +385,9 @@
     <attributes name="wp8lockscreenbackgroundkey" value="false"/>
     <attributes name="androidInstallLocation" value="Auto"/>
     <attributes name="ID_CAP_IDENTITY_USER" value="true"/>
-    <attributes name="cloud_env_GUID" value="f624671f-9244-42e8-a143-809a3e0e7aaf"/>
     <attributes name="androidInstallLocnPref" value="false"/>
     <attributes name="android_allowselfsignedcertificates" value="None"/>
-    <attributes name="cloud_env_name" value="Kony Cloud MobileFabric-MobileFabric"/>
+    <attributes name="cloud_env_name" value=""/>
     <attributes name="tcbb480basefontsize" value="17"/>
     <attributes name="SET_PREFERRED_APPLICATIONS" value="false"/>
     <attributes name="WP8_ID_CAP_MICROPHONE" value="true"/>

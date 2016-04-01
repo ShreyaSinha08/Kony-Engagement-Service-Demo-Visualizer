@@ -22,7 +22,7 @@ function negativeSelection(){
 function positiveSelection(){
 	//Defining basicConf parameter for alert
 	var basicConf = {message: "Notifications may include alerts,\nsounds and icon badges.These can\nbe configured in settings.",
-	alertType: constants.ALERT_TYPE_CONFIRMATION,alertTitle:'"Kony Messaging Services" Would Like to Send You\nPush Notifications',yesLabel:"OK",
+	alertType: constants.ALERT_TYPE_CONFIRMATION,alertTitle:'"Kony Engagement Services" Would Like to Send You\nPush Notifications',yesLabel:"OK",
 	noLabel:"Don't Allow","alertIcon": "conf.png", alertHandler: handle2};
 
 	//Defining pspConf parameter for alert

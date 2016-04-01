@@ -22,7 +22,9 @@ function resetDemo(){
 			//frmUrl.txtBoxUrl.text=KMSPROP.kmsServerUrl;
 		//	KMSPROP.kmsServerUrl=frmSetting.txtBoxurl;
 		   deleteAudience();
-		   KMSPROP.kmsServerUrl=frmSetting.txtBoxurl.text;   
+		   KMSPROP.kmsServerUrl=frmSetting.txtBoxurl.text;
+		   KMSPROP.appId=frmSetting.txtBoxAppId.text;
+		   KMSPROP.senderID=frmSetting.txtBoxSenderID.text;   
 		   
 		}
 		
@@ -45,7 +47,7 @@ function resetDemo(){
 ****************************************************************
 *	Name    : delete
 *	Author  : Kony
-*	Purpose : This function will delete the details of registered audience member.
+*	Purpose : This function will delete the details of registered User.
 *****************************************************************/
 
  function deleteAudience(){
@@ -61,6 +63,8 @@ function resetDemo(){
     			updateMessaageAlert(""+result["message"]);
     			kony.store.removeItem("KSID");
     			kony.store.removeItem("KMSURL");
+    			kony.store.removeItem("KMSAppID");
+    			kony.store.removeItem("KMSSenderID");
     			kony.store.removeItem("AUDIENCE_FIRSTNAME");
     			kony.store.removeItem("AUDIENCE_LASTNAME");
     			kony.store.removeItem("AUDIENCE_EMAIL");
@@ -74,6 +78,8 @@ function resetDemo(){
     			frmProfile.txtBoxEmail.text="";
     			frmProfile.txtBoxMob.text="";
     			frmEvent.txtBoxEventId.text="";
+    			frmUrl.txtBoxAppId.text="";
+    			frmUrl.txtBoxSenderID.text="";
     			initialReg=true;
     			ksid=null;
     			audienceFirstName=null;

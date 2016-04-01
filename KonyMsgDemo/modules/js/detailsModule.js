@@ -1,3 +1,4 @@
+var country="India";
 /**
  * Name		:	frmProfilePreShow
  * Author	:	Kony
@@ -15,7 +16,87 @@ function frmProfilePreShow()
 	
 }
 
+////////////////////////////////////////
 function updateAudience(){
+	kony.print("\n\n-----------in update audience---------------\n");
+	function onReadyStateChange()
+	{
+		kony.print("\nonReadyStateChange:-"+JSON.stringify(this));
+		if(this.response!==null ){
+  		  			kony.print("\nResponse:- "+JSON.stringify(this.response));	    
+				   	var jsonResponse=JSON.parse(this.response);
+       		if(this.statusText=="OK"){
+  			//update is successfull.
+    				kony.store.setItem("AUDIENCE_FIRSTNAME", audienceFirstName);
+    				kony.store.setItem("AUDIENCE_LASTNAME", audienceLastName);
+    				kony.store.setItem("AUDIENCE_EMAIL", audienceEmail);
+    				kony.store.setItem("AUDIENCE_COUNTRY", audienceCountry);
+    				kony.store.setItem("AUDIENCE_STATE", audienceState);
+    				kony.store.setItem("AUDIENCE_MOB", audienceMob);
+    				kony.store.setItem("AUDIENCE_STATUS", audienceStatus);
+    				kony.store.setItem("AUDIENCE_SMS_SUBSCRIPTION", audienceSmsSubs);
+    				kony.store.setItem("AUDIENCE_EMAIL_SUBSCRIPTION", audienceEmailSubs);
+    				kony.store.setItem("AUDIENCE_PUSH_SUBSCRIPTION", audiencePushSubs);
+    				setpreferences();
+    				updateMessaageAlert(jsonResponse["message"]);
+  			}else{
+  				alert(jsonResponse["message"]);
+  			}
+  			kony.application.dismissLoadingScreen();
+  		}
+	}
+	
+	
+  		audienceStatus=true;
+    	if(audienceSmsSubs==undefined||audienceSmsSubs==null){
+    		audienceSmsSubs=true;
+    		}
+    	if(audienceEmailSubs==undefined||audienceEmailSubs==null){
+    		audienceEmailSubs=true;}
+    		
+    	var httpclient1 = new kony.net.HttpRequest();
+  		httpclient1.onReadyStateChange=onReadyStateChange();
+  		httpclient1.timeout=0;
+		var requestMethod = constants.HTTP_METHOD_POST;	
+		var async = true;
+		var url=KMSPROP.kmsServerUrl+"/api/v1/subscribeaudience";
+  		
+  		//kony.print("\n httpclient1 before:-"+JSON.stringify(httpclient1));
+  		httpclient1.open(requestMethod, url,async);
+		httpclient1.setRequestHeader("Content-Type","application/json");
+  		
+  		//kony.print("\n httpclient1 after:-"+JSON.stringify(httpclient1));
+  		var frmData = new kony.net.FormData();
+		
+		var payload1='{'
+  		+'"ksid":'+ksid+',' 
+  		+'"lastName" :'+'\"'+audienceLastName+'\",'
+  		+'"email" : '+'\"'+audienceEmail+'\",'
+  		+'"active" :'+ audienceStatus+','
+  		+'"firstName" :'+'\"'+audienceFirstName+'\",'
+  		+'"mobileNumber" :'+'\"'+audienceMob+'\",'
+  		+'"smsSubscription" :'+ audienceSmsSubs+','
+  		+'"emailSubscription":'+audienceEmailSubs+','
+  		+'"country":'+'\"'+audienceCountry+'\",'
+  		+'"state":'+'\"'+audienceState+'\",'
+  		+'"pushSubscription":'+audiencePushSubs
+  		+'}';
+		frmData.append("postdata",payload1);
+		if(firstRegister==true){
+		kony.application.showLoadingScreen("sknLoading","creating..",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+		}
+		else{
+		kony.application.showLoadingScreen("sknLoading","updating..",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+		}
+		kony.print("\npayload1:-"+payload1);
+		httpclient1.send(frmData);
+  		
+  
+	
+}
+///////////////////////////////////////
+
+function updateAudienceIOS(){
 	kony.print("\n\n-----------in update audience---------------\n");
 	function asyncCallback(status, result) 
 	{
@@ -25,13 +106,15 @@ function updateAudience(){
     	{
     			if(result["httpresponse"]["responsecode"]==400){
     				kony.print("\nError in updateAudience:-\n"+ JSON.stringify(result));
-    				alert("Audience member already exists with this email/Mobile.");
+    				alert("User already exists with this email/Mobile.");
     				return;
     			}else if(result["httpresponse"]["responsecode"]==200){
     				kony.print("\n result:-"+JSON.stringify(result));
     				kony.store.setItem("AUDIENCE_FIRSTNAME", audienceFirstName);
     				kony.store.setItem("AUDIENCE_LASTNAME", audienceLastName);
     				kony.store.setItem("AUDIENCE_EMAIL", audienceEmail);
+    				kony.store.setItem("AUDIENCE_COUNTRY", audienceCountry);
+    				kony.store.setItem("AUDIENCE_STATE", audienceState);
     				kony.store.setItem("AUDIENCE_MOB", audienceMob);
     				kony.store.setItem("AUDIENCE_STATUS", audienceStatus);
     				kony.store.setItem("AUDIENCE_SMS_SUBSCRIPTION", audienceSmsSubs);
@@ -44,56 +127,38 @@ function updateAudience(){
     	}
     	kony.application.dismissLoadingScreen();
     }
-  	/*var payload0='{'
-  		+'"ksid":2380599554376807948,' 
-  		+'"lastName" :"kumar",'
-  		+'"email" : "abc@kony.com",'
-  		+'"active" : true,'
-  		+'"firstName" : "abc",'
-  		+'"mobileNumber" : "+918909878909",'
-  		+'"smsSubscription" : false,'
-  		+'"emailSubscription": false,'
-  		+'"pushSubscription":true'
-  		+'}';*/
+  	
   		audienceStatus=true;
-  		//ksid=12345;	
-  		/*audienceStatus=true;
-    	audienceFirstName="dharmendra";
-    	audienceLastName="kumar";
-    	audienceEmail="dharmendra.kumar@Kony.com";
-    	audienceSmsSubs=true;
-    	audiencePushSubs=true;
-    	audienceEmailSubs=true;
-    	audienceID=null;*/
     	if(audienceSmsSubs==undefined||audienceSmsSubs==null){
     		audienceSmsSubs=true;
     		}
     	if(audienceEmailSubs==undefined||audienceEmailSubs==null){
     		audienceEmailSubs=true;}
-  	var payload1='{'
-  		+'"ksid":'+ksid+',' 
-  		+'"lastName" :'+'\"'+audienceLastName+'\",'
-  		+'"email" : '+'\"'+audienceEmail+'\",'
-  		+'"active" :'+ audienceStatus+','
-  		+'"firstName" :'+'\"'+audienceFirstName+'\",'
-  		+'"mobileNumber" :'+'\"'+audienceMob+'\",'
-  		+'"smsSubscription" :'+ audienceSmsSubs+','
-  		+'"emailSubscription":'+audienceEmailSubs+','
-  		+'"pushSubscription":'+audiencePushSubs
-  		+'}';
-  	kony.print("\npayload1:-"+payload1);
-  //	kony.print("\npayload3:-"+payload3);
-	var inputParamTable={
-			httpheaders:{
-            	"Content-Type":"application/json"
-            	},
-			postdata:payload1
-			//channel:"rc"
+    		
+	  	var payload1='{'
+	  		+'"ksid":'+ksid+',' 
+	  		+'"lastName" :'+'\"'+audienceLastName+'\",'
+	  		+'"email" : '+'\"'+audienceEmail+'\",'
+	  		+'"active" :'+ audienceStatus+','
+	  		+'"firstName" :'+'\"'+audienceFirstName+'\",'
+	  		+'"mobileNumber" :'+'\"'+audienceMob+'\",'
+	  		+'"smsSubscription" :'+ audienceSmsSubs+','
+	  		+'"emailSubscription":'+audienceEmailSubs+','
+	  		+'"country":'+'\"'+audienceCountry+'\",'
+	  		+'"state":'+'\"'+audienceState+'\",'
+	  		+'"pushSubscription":'+audiencePushSubs
+	  		+'}';
+	  		
+	  	kony.print("\npayload1:-"+payload1);
+		var inputParamTable={
+				httpheaders:{
+	            	"Content-Type":"application/json"
+	            	},
+				postdata:payload1
+			
     };
     try{
 		var url=KMSPROP.kmsServerUrl+"/api/v1/subscribeaudience";
-		//var url="http://10.10.12.64:8282/kpns/api/v1/subscribeaudience/";
-		//var url="http://10.10.12.86:8080/LoginDemo1/login";
 	   	kony.print("\nurl-->"+url);
 	   	kony.print("\n ipTable-->"+JSON.stringify(inputParamTable));
 	   	kony.application.showLoadingScreen("sknLoading","updating..",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
@@ -104,6 +169,8 @@ function updateAudience(){
 		alert("Error"+err);
     }	
 }
+
+
 
 /**
  * Name		:	ManageProfile
@@ -133,7 +200,7 @@ function manageProfile(){
 /**
  * Name		:	updateActivityStatus
  * Author	:	Kony
- * Purpose	:	To update the activity status of the audience member while updating the details.
+ * Purpose	:	To update the activity status of the User while updating the details.
 **/
 function updateActivityStatus(list){
 	if(list["selectedKeys"][0]=="1")
@@ -192,7 +259,6 @@ function pushPrefSubs(){
 	  	alert("Error"+err);
 	  	kony.application.dismissLoadingScreen();
     }
-
 }
 function pushPrefUnSubs(){
 }
@@ -202,7 +268,7 @@ function pushPrefUnSubs(){
 /**
  * Name		:	updateDeatils
  * Author	:	Kony
- * Purpose	:	To update the details oh the audience member.
+ * Purpose	:	To update the details oh the User.
 **/
 function updateDeatils()
 {

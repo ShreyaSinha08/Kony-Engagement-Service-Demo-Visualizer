@@ -5,6 +5,7 @@
         <authenticationMode>basic</authenticationMode>
         <cacheduration></cacheduration>
         <cacheable>false</cacheable>
+        <includecookies></includecookies>
         <dataprovider></dataprovider>
         <dcResponse/>
         <encryptPwd>true</encryptPwd>
@@ -159,13 +160,13 @@
    "description": "Updated Successfully",
    "statusCode": 200
 }</outtemplate>
-        <outTemplateHeader>Cache-control: no-cache="set-cookie"
-Date: Wed, 06 May 2015 09:13:03 GMT
-Content-Length: 55
-Set-Cookie: AWSELB=497D0FA90C07B20517FD3F01434D06EBA8D747E2FE973FC89BC1FA145FEDC34C60D14B01F26D2283E817E87EB1372B40626CC4123AE909B7356E574E21253AFBEC481FC950;PATH=/;MAX-AGE=3600
+        <outTemplateHeader>Server: Kony
 Connection: keep-alive
+Set-Cookie: AWSELB=497D0FA90C07B20517FD3F01434D06EBA8D747E2FE973FC89BC1FA145FEDC34C60D14B01F26D2283E817E87EB1372B40626CC4123A5BC1283BC1F9ED4B1BAEB6E23E9515B2;PATH=/;MAX-AGE=3600
+Content-Length: 55
+Date: Fri, 19 Feb 2016 18:31:29 GMT
+Cache-control: no-cache="set-cookie"
 Content-Type: text/html
-Server: Kony
 </outTemplateHeader>
         <outparam>
             <category></category>

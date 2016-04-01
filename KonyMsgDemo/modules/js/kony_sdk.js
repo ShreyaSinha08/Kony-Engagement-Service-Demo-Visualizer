@@ -543,7 +543,7 @@ kony.sdk.error.getMFcodeErrObj = function(mfcode, message, details, errMessagePr
 		}
 		errorObj.opstatus = kony.sdk.errorcodes.invalid_user_app_credentials
 		errorObj.message = errMessagePrefix + message;
-	} else if ((mfcode === "Auth-5") || (mfcode === "Auth-6") || (mfcode === "Auth-33") || (mfcode === "Auth-36") || (mfcode === "Auth-46") || (mfcode === "Auth-55")) {
+	} else if ((mfcode === "Auth-5") || (mfcode === "Auth-6") || (mfcode === "Gateway-31") || (mfcode === "Gateway-33") || (mfcode === "Gateway-35") || (mfcode === "Gateway-36") || (mfcode === "Auth-46") || (mfcode === "Auth-55")) {
 		errorObj.opstatus = kony.sdk.errorcodes.invalid_session_or_token_expiry
 		errorObj.message = errMessagePrefix + kony.sdk.errormessages.invalid_session_or_token_expiry
 	} else if (mfcode === "Auth-7" || mfcode === "Auth-27") {
@@ -566,7 +566,7 @@ function getAuthErrorMessage(mfcode) {
 		return kony.sdk.errormessages.invalid_app_credentials
 	} else if (mfcode === "Auth-3") {
 		return kony.sdk.errormessages.invalid_user_app_credentials
-	} else if ((mfcode === "Auth-5") || (mfcode === "Auth-6") || (mfcode === "Auth-33") || (mfcode === "Auth-36") || (mfcode === "Auth-46") || (mfcode === "Auth-55")) {
+	} else if ((mfcode === "Auth-5") || (mfcode === "Auth-6") || (mfcode === "Gateway-31") || (mfcode === "Gateway-33") || (mfcode === "Gateway-35") || (mfcode === "Gateway-36") || (mfcode === "Auth-46") || (mfcode === "Auth-55")) {
 		return kony.sdk.errormessages.invalid_session_or_token_expiry
 	} else if (mfcode === "Auth-7" || mfcode === "Auth-27") {
 		return kony.sdk.errormessages.invalid_user_app_services
@@ -675,17 +675,7 @@ function IdentityService(konyRef, rec) {
 	var dsKey = _serviceUrl + "::" + _providerName + "::" + _type + "::RAW";
 
 	function resetAllCurrentTokens(konyRef, _providerName) {
-		if (konyRef) {
-			konyRef.currentClaimToken = null;
-			konyRef.currentBackEndToken = null;
-			konyRef.claimTokenExpiry = null;
-			konyRef.currentRefreshToken = null;
-			if (_providerName) {
-				if (konyRef.tokens.hasOwnProperty(_providerName)) {
-					konyRef.tokens[_providerName] = null;
-				}
-			}
-		}
+		kony.sdk.resetCacheKeys(konyRef, _providerName);
 	}
 
 	/**
@@ -783,8 +773,17 @@ function IdentityService(konyRef, rec) {
 				"Content-Type": "application/x-www-form-urlencoded"
 			});
 		} else {
-			logger.log("### AuthService::login Adapter type is " + _type);
-			OAuthHandler(_serviceUrl, _providerName, invokeAjaxCall, _type);
+			if (options.userid && options.password) {
+				var payload = {};
+				for(var option in options){
+					payload[option] = options[option];
+				}
+				payload["provider"] = _providerName;
+				invokeAjaxCall("/login",payload);
+			} else {
+				logger.log("### AuthService::login Adapter type is " + _type);
+				OAuthHandler(_serviceUrl, _providerName, invokeAjaxCall, _type);
+			}
 		}
 	};
 	/**
@@ -1150,6 +1149,34 @@ kony.sdk.isJson = function(str) {
 		return false;
 	}
 	return true;
+}
+
+//private method to identify whether session/token expired or not based on error code
+kony.sdk.isSessionOrTokenExpired = function(mfcode) {
+	if (mfcode && (mfcode === "Auth-5" || mfcode === "Auth-6" || mfcode === "Gateway-31" || mfcode === "Gateway-33" || mfcode === "Gateway-35" || mfcode === "Gateway-36" || mfcode === "Auth-46" || mfcode === "Auth-55")) {
+		return true;
+	}
+	return false;
+}
+
+//private method to clear cache
+kony.sdk.resetCacheKeys = function(konyRef, _providerName) {
+	try {
+		if (konyRef) {
+			konyRef.currentClaimToken = null;
+			konyRef.currentBackEndToken = null;
+			konyRef.claimTokenExpiry = null;
+			konyRef.currentRefreshToken = null;
+			if (_providerName) {
+				if (konyRef.tokens.hasOwnProperty(_providerName)) {
+					konyRef.tokens[_providerName] = null;
+				}
+			}
+		}
+	} catch(e) {
+		var logger = new konyLogger();
+		logger.log("Error while clearing the cache..");
+	}
 }
 kony.sdk.serviceDoc = function() {
 	var appId = "";
@@ -1575,7 +1602,13 @@ function IntegrationService(konyRef, serviceName) {
 
 	function _invokeOperation(operationName, headers, data, successCallback, failureCallback) {
 		var requestData = {};
+		var logger = new konyLogger();
 		var reportingData = kony.sdk.getPayload(konyRef);
+		reportingData.rsid = kony.ds.read("konyUUID")[0];
+		if(!reportingData.rsid)
+		{
+			logger.log("rsid is either empty,null or undefined");
+		}
 		if (kony.sdk.metric) {
 			if (kony.sdk.metric.reportEventBufferBackupArray.length === 0) {
 				kony.sdk.metric.readFromDS();
@@ -1627,9 +1660,10 @@ function IntegrationService(konyRef, serviceName) {
 				}
 				if(err["mfcode"]){
 					var konyRef = kony.sdk.getCurrentInstance();
-					konyRef.currentClaimToken = null;
-					konyRef.claimTokenExpiry = null;
-					konyRef.currentRefreshToken = null;					
+					//clear the cache if the error code related to session/token expiry
+					if (kony.sdk.isSessionOrTokenExpired(err["mfcode"])) {
+						kony.sdk.resetCacheKeys(konyRef);
+					}
 				}
 				kony.sdk.verifyAndCallClosure(failureCallback, kony.sdk.error.getIntegrationErrObj(err));
 			}, true);
@@ -2835,8 +2869,8 @@ kony.setupsdks = function(initConfig, successCallBack, errorCallBack) {
           kony.sdk.isLicenseUrlAvailable = false;
         }
     }
-    if (kony.sdk.isLicenseUrlAvailable && kony.license.checkAndCreateSession) {
-      kony.license.checkAndCreateSession();
+    if (kony.sdk.isLicenseUrlAvailable && kony.license.createSession) {
+        kony.license.createSession();
     }
     if (isServiceDocPresentInAppConfig(initConfig)) {
       initWithServiceDocHelper(initConfig.appConfig.serviceDoc, successcallback, failurecallback);

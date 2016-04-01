@@ -11,6 +11,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -49,6 +50,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -93,6 +95,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -130,6 +133,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -175,6 +179,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -213,6 +218,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -251,6 +257,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -277,6 +284,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -316,6 +324,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>
@@ -354,6 +363,7 @@
             <config-param name="urlprovider" value=""/>
             <config-param name="dataprovider" value=""/>
             <config-param name="sockettimeout" value=""/>
+            <config-param name="includecookies" value=""/>
             <config-param name="proxyname" value=""/>
             <config-param name="proxyport" value=""/>
             <config-param name="proxyusername" value=""/>

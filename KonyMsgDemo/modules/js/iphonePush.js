@@ -63,6 +63,10 @@ function onlinePushNotificationiPhoneCallback(msg)
 {
 	kony.print("************ JS onlinePushNotificationCallback() called *********");
 	kony.print("\n received push:-"+JSON.stringify(msg));
+	if(msg["isRichPush"]!=undefined){
+		displayRichPush(msg);
+	}else
+	//alert("Message: "+msg["content"]);
 	if(msg["alert"]["title"]!=undefined){
 		var basicConf = {message: msg["alert"]["body"],alertType: constants.ALERT_TYPE_INFO,
 		alertTitle:msg["alert"]["title"]};//,yesLabel:"OK",noLabel:"Don't Allow","alertIcon": "conf.png",alertHandler: handle2};

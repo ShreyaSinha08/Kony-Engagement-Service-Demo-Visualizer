@@ -4432,7 +4432,7 @@
         <att name="Chart2d3dProperties" value="" type="String"/>
     </skin>
     <skin>
-        <att name="Name" value="titleBar" type="String"/>
+        <att name="Name" value="titleBarstudio1" type="String"/>
         <att name="WidgetType" value="TitleBar" type="String"/>
         <att name="Bg_type" value="1" type="int"/>
         <att name="Background_color" value="255,255,255" type="RGB"/>

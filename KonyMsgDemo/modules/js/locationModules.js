@@ -14,23 +14,22 @@ function updatedLoc()
 			}
     	}
     }
-    ipurl=KMSPROP.kmsServerUrl.substring(8);
-	//ipurl="mobilefabric-demo.messaging.konycloud.com";
+    var locname="xxxx";
+    var payload='{'
+			+'"locname":'+'\"'+locname+'\",'
+			+'"latitude":'+'\"'+lat+'\",'
+			+'"longitude":'+'\"'+lon+'\",'
+			+'"ksid":'+ '\"'+ksid+'\",'
+			+'}';
+    
     var inputParamTable={
          	httpheaders:{
            		"Content-Type":"application/json"
            	},
-			httpconfig:{method:"POST"},
-			serviceID:"geoUpdate",
-			appID:"kmsapp",
-			channel:"rc",
-   			kmsurl:ipurl,
-   			"ksid":ksid,
-			"lat":lat,
-			"locname":"xxx",
-			"lon":lon
+           	postdata:payload
+   			
 	};
-    var url=appConfig.url;
+    var url=KMSPROP.kmsServerUrl+"/service/geolocupdate";
     kony.print("\n----url----->"+url) ;  
     kony.print("\nIP update loc:-"+JSON.stringify(inputParamTable));
     try{
@@ -98,7 +97,11 @@ function geoPosition()
 		kony.print("latitutde:-"+lat);
 		kony.print("longitude:-"+lon);
 		kony.application.dismissLoadingScreen();
-		updatedLoc();
+		if(kony.os.deviceInfo().name=="android")
+		  updatedLocLatest();
+		 else
+		 updatedLoc();
+          
 	}
 	function geoErrorCallBack(positionerror)
 	{
@@ -126,4 +129,62 @@ function updateLocations(){
 	
 	kony.timer.schedule("mytimer123",geoPosition, 3600, true);
 	//The function timerFunc will be executed after every 3600 seconds.
+}
+
+function updatedLocLatest()
+{
+	//onready state change.
+	function onReadyStateChange()
+	{
+		kony.print("\nonReadyStateChange:-"+JSON.stringify(this));
+		if(this.response!==null)
+		{
+  			kony.print("\nResponse:- "+JSON.stringify(this.response));
+  			var jsonResponse=JSON.parse(this.response);
+  			if(this.statusText=="OK")
+  			{
+  				if(this.response.statusCode==404){
+  					kony.print("error response:-"+this.response.description);
+  				}
+  			//update is successfull.
+				else if(this.response.statusCode==200){
+  					kony.print("response description:-"+this.response.description);
+  				}
+    			//kony.print("\n******update is successfull.******\n");	
+  			}else
+  			{
+  				alert(jsonResponse["message"]);
+  			}
+  			//kony.application.dismissLoadingScreen();
+  		}
+	}
+//onready state change.
+	var httpclient1 = new kony.net.HttpRequest();
+  	httpclient1.onReadyStateChange=onReadyStateChange;
+  	httpclient1.timeout=0;
+	var requestMethod = constants.HTTP_METHOD_POST;	
+	var async = true;
+	//var url="https://kmsdev70.messaging.sit2-konycloud.com/service/geolocupdate";
+	//var url="https://mfreddy-qa.messaging.qa-konycloud.com/service/geolocupdate";
+    var url=KMSPROP.kmsServerUrl+"/service/geolocupdate";
+  	httpclient1.open(requestMethod, url,async);
+	httpclient1.setRequestHeader("Content-Type","application/json");
+	var frmData = new kony.net.FormData();
+	
+  		var locname="xxxx";
+  		//var lat=lat;
+  		//var lon=lon;
+  		//var ksid=ksid;
+  		//var appId=KMSPROP.appId;
+  		//var deviceId=kony.os.deviceInfo().deviceid;
+  		//alert("lat is "+lat+"long is "+lon+"ksid is "+ksid);
+	var payload='{'
+			+'"locname":'+'\"'+locname+'\",'
+			+'"latitude":'+'\"'+lat+'\",'
+			+'"longitude":'+'\"'+lon+'\",'
+			+'"ksid":'+ '\"'+ksid+'\",'
+			+'}';
+	frmData.append("postdata",payload);
+	kony.print("\n---payload:-> "+payload);
+	httpclient1.send(frmData);
 }

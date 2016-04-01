@@ -5,6 +5,7 @@
         <authenticationMode>basic</authenticationMode>
         <cacheduration></cacheduration>
         <cacheable>false</cacheable>
+        <includecookies></includecookies>
         <dataprovider></dataprovider>
         <dcResponse/>
         <encryptPwd>true</encryptPwd>

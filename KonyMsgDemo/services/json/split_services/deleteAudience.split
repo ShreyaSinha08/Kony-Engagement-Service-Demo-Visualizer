@@ -5,6 +5,7 @@
         <authenticationMode>basic</authenticationMode>
         <cacheduration></cacheduration>
         <cacheable>false</cacheable>
+        <includecookies></includecookies>
         <dataprovider></dataprovider>
         <dcResponse/>
         <encryptPwd>true</encryptPwd>
@@ -130,7 +131,7 @@
         <ntlmHost></ntlmHost>
         <outtemplate>{
    "id": "284",
-   "message": "Audience Member deleted successfully"
+   "message": "User deleted successfully"
 }</outtemplate>
         <outTemplateHeader>Cache-control: no-cache="set-cookie"
 Date: Wed, 18 Mar 2015 10:50:52 GMT

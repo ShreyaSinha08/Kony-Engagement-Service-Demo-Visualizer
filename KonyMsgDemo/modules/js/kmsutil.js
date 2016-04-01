@@ -1,12 +1,16 @@
 var accessSecret,accessToken;
 var audienceID;
-var audienceStatus,audienceFirstName,audienceLastName,audienceEmail,audienceSmsSubs,audiencePushSubs,audienceEmailSubs,audienceMob;
+var audienceStatus,audienceFirstName,audienceLastName,audienceEmail,audienceSmsSubs,audiencePushSubs,audienceEmailSubs,audienceMob,audienceCountry,audienceState;
 //var osVersion=7;
 var ksid;
 var kmsUrl;
 var ipurl;
 var KMSURL;
 var subsFrom;
+var selectedCountry;
+var selectedCountryKey;
+var selectedState;
+var selectedStateKey;
 audienceEmail="xxx@xxx.com";
 var registrationID;
 var opSystem;
@@ -18,7 +22,7 @@ var nameRegExp=/[\W]/i;
 ****************************************************************
 *	Name    : editAudience2
 *	Author  : Kony
-*	Purpose : This function will update the details of registered audience member.
+*	Purpose : This function will update the details of registered User.
 *****************************************************************/
 function editAudience2(){
 	function asyncCallback(status, result) {
@@ -121,15 +125,15 @@ function getAudience(){
     			audienceMob="";
     			if(typeof audienceFirstName)
     			frmProfile.txtBoxFname=audienceFirstName;
-		frmProfile.txtBoxLname=audienceLastName;
-		frmProfile.txtBoxEmail=audienceEmail;
-		frmProfile.txtBoxMob=audienceMob;
+				frmProfile.txtBoxLname=audienceLastName;
+				frmProfile.txtBoxEmail=audienceEmail;
+				frmProfile.txtBoxMob=audienceMob;
 }
 
 /**
  * Name		:	getAudience
  * Author	:	Kony
- * Purpose	:	To recevice the details of this audience member from the KMS.
+ * Purpose	:	To recevice the details of this User from the KMS.
 **/
 function getAudience1(){
 	function asyncCallback(status, result) {
@@ -138,7 +142,7 @@ function getAudience1(){
     	{
     		if(result["httpresponse"]!=undefined){
     			if(result["httpresponse"]["responsecode"]==400){
-    				kony.print("\nNo Audience Member found mapping to the given KSID or Audience Id" );
+    				kony.print("\nNo User found mapping to the given KSID or Audience Id" );
     			}
     		
     		}
@@ -187,7 +191,6 @@ function getAudience1(){
     }
     
     try{
-    
     	kony.application.showLoadingScreen("sknLoading","loading details...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
 	   //	var url=KMSPROP.kmsServerUrl+":443/api/v1/audience/"+audienceID;
 		//var url=KMSPROP.kmsServerUrl+"api/v1/subscribeaudience/"+ksid;
@@ -346,6 +349,157 @@ function unSubscribePushSubscription(){
 	  	kony.application.dismissLoadingScreen();
     }
 }
+//////////////////////////////////////////////
+function updatePushSubscription2(){
+	kony.print("\n\n ------------in updatePushSubscription--------------------\n");
+//audienceFirstName=frmProfile.txtBoxFname.text;
+  	if(frmProfile.txtBoxFname.text==null|| frmProfile.txtBoxFname.text==""){
+  		alert("Please enter first name");
+  		return;
+  	}else if(nameRegExp.test(frmProfile.txtBoxFname.text)){
+  			alert("Invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxFname.text)+"'");
+  			return;
+  	}
+   //	audienceLastName=frmProfile.txtBoxLname.text;
+   	if(frmProfile.txtBoxLname.text==null || frmProfile.txtBoxLname.text==""){
+  		alert("Please enter last name");
+  		return;
+  	}else if(nameRegExp.test(frmProfile.txtBoxLname.text)){
+  			alert("Invalid character "+nameRegExp.exec(frmProfile.txtBoxLname.text));
+  			return;
+  	}
+   	//audienceEmail=frmProfile.txtBoxEmail.text;
+   	if(frmProfile.txtBoxEmail.text==null|| frmProfile.txtBoxEmail.text==""){
+  		alert("Please enter email id");
+  		return;
+  	}else if(emailReg.test(frmProfile.txtBoxEmail.text)==false){
+  			alert("Please enter valid email..");
+  			return;
+  	}
+  	if(selectedCountry==null|| selectedCountry==""){
+  		alert("Please enter Country name");
+  		return;
+  	}
+  	/*else if(nameRegExp.test(frmProfile.txtBoxCountry.text))
+  	{
+  			alert("Invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxCountry.text)+"'");
+  			return;
+  	}*/
+  	if(frmProfile.txtBoxState.text==null|| frmProfile.txtBoxState.text==""){
+  		frmProfile.txtBoxState.text==" ";
+  		//alert("Please enter State name");
+  		//return;
+  	}/*else if(nameRegExp.test(frmProfile.txtBoxState.text))
+  	{
+  			alert("Invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxState.text)+"'");
+  			return;
+  	}*/
+   	//audienceMob=frmProfile.txtBoxMob.text;
+   	if(frmProfile.txtBoxMob.text==null|| frmProfile.txtBoxMob.text==""){
+  		alert("Please enter mobile number");
+  		return;
+  	}else if(mobReg.test(frmProfile.txtBoxMob.text)==false)
+  	{
+  		alert("Please enter valid mobile number with country code");
+  		return;
+  	}
+  	/*kony.print("\n"+audienceFirstName);
+  	kony.print("\n"+audienceLastName);
+  	kony.print("\n"+audienceEmail);
+  	kony.print("\n"+audienceMob);
+  	kony.print("\n"+audienceEmailSubs);
+  	kony.print("\n"+audienceSmsSubs);
+  	kony.print("\nforms");
+  	kony.print("\n"+frmProfile.txtBoxFname.text);
+  	kony.print("\n"+frmProfile.txtBoxLname.text);
+  	kony.print("\n"+frmProfile.txtBoxEmail.text);*/
+	if((audienceFirstName ==frmProfile.txtBoxFname.text) && (audienceLastName == frmProfile.txtBoxLname.text)&& (audienceCountry == frmProfile.txtBoxCountry.text)&& (audienceState == frmProfile.txtBoxState.text) && (audienceEmail==frmProfile.txtBoxEmail.text) && (audienceMob==frmProfile.txtBoxMob.text)&&(audienceEmailSubs==emailStatusBefore)&&( audienceSmsSubs==smsStatusBefore)&&(audiencePushSubs == pushStatusBefore))
+    {
+    	if(firstRegister==true){
+    	
+    		frmPreference.show();
+    		return;
+    	}
+        	frmHome.show();
+        	return;
+    }else{
+    	audienceFirstName=frmProfile.txtBoxFname.text;
+    	audienceLastName=frmProfile.txtBoxLname.text;
+    	audienceEmail=frmProfile.txtBoxEmail.text;
+    	audienceCountry=frmProfile.txtBoxCountry.text;
+    	audienceState=frmProfile.txtBoxState.text;
+    	audienceMob=frmProfile.txtBoxMob.text;
+    //	audiencePushSubs=true;
+    //	audienceSmsSubs=true;
+    //	audienceEmailSubs=true;
+    //	emailStatusBefore=true;
+    //	smsStatusBefore=true;
+    //	pushStatusBefore=true;
+    	
+    }
+	/*function asyncCallback(status, result) 
+	{
+    	kony.print("\n------status------>"+status);
+		if(status==400)
+		{
+			kony.print("\n\n----in result------>"+JSON.stringify(result) );
+			if(result["subscriptionResponse"]!=undefined){
+				if(result["subscriptionResponse"]["statusCode"]==200){
+					kony.print("\n subscription updated\n");
+					isPushSubs=true;
+					kony.application.dismissLoadingScreen();
+				//	kony.timer.schedule("mytimer123",geoPosition,60, true);
+					updateAudience();
+					//geoPosition();
+				}
+			}else
+				kony.application.dismissLoadingScreen();
+		}
+	}*/
+	
+	kony.print("\n\n<----------in updateSubscription-------->\n\n");
+    var payload={
+ 			"subscriptionService": {
+  				"subscribe": {
+  	 				"sid": registrationID,
+  	 				"appId": KMSPROP.appId,
+   					"ufid": audienceEmail,
+  	 				"osType":opSystem,
+  		 			"deviceId":kony.os.deviceInfo().deviceid
+  					}
+ 				}
+			};
+	var jsonPayload=JSON.stringify(payload);
+	var inputParamTable={
+			 httpheaders:{
+            	"Content-Type":"application/json"
+            	},
+       			postdata:jsonPayload,
+       		channel:"rc"
+			};
+    var pushSubscUrl=KMSPROP.kmsServerUrl+"/subscription";
+	//var pushSubscUrl="http://10.10.12.64:8282/kpns/subscription";
+   // kony.print("\n pushSubscUrl:-"+pushSubscUrl);
+   // kony.print("\ninputParamTable:-"+JSON.stringify(inputParamTable));
+    try{ 
+        if(firstRegister==true){
+        kony.application.showLoadingScreen("sknLoading","creating...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+        }
+        else{
+        kony.application.showLoadingScreen("sknLoading","updating...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+        }
+   		
+	   var connHandle = kony.net.invokeServiceAsync(
+                        pushSubscUrl,inputParamTable,asyncCallback);
+	}catch(err){
+     	kony.print("\nexception in invoking service---\n"+JSON.stringify(err));
+	  	alert("Error"+err);
+	  	kony.application.dismissLoadingScreen();
+    }
+}
+//////////////////////////////////////////////
+
+//Subscribing to KMS server.
 function updatePushSubscription(){
 kony.print("\n\n ------------in updatePushSubscription--------------------\n");
 //audienceFirstName=frmProfile.txtBoxFname.text;
@@ -374,6 +528,27 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
   			alert("Please enter valid email..");
   			return;
   	}
+  	
+  	if(selectedCountry==null|| selectedCountry==""){
+  		alert("Please select Country name");
+  		return;
+  	}
+  	/*else if(nameRegExp.test(frmProfile.txtBoxCountry.text))
+  	{
+  			alert("Invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxCountry.text)+"'");
+  			return;
+  	}*/
+  	if((frmProfile.lstboxStates.isVisible==true) && (frmProfile.lstboxStates.selectedKeyValue[1]==null || frmProfile.lstboxStates.selectedKeyValue[1]=="")){
+  	
+  		alert("Please select State name");
+  		return;
+  	}
+  	
+  	/*else if(nameRegExp.test(frmProfile.txtBoxState.text))
+  	{
+  			alert("Invalid character "+"'"+nameRegExp.exec(frmProfile.txtBoxState.text)+"'");
+  			return;
+  	}*/
    	//audienceMob=frmProfile.txtBoxMob.text;
    	if(frmProfile.txtBoxMob.text==null|| frmProfile.txtBoxMob.text==""){
   		alert("Please enter mobile number");
@@ -393,7 +568,7 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
   	kony.print("\n"+frmProfile.txtBoxFname.text);
   	kony.print("\n"+frmProfile.txtBoxLname.text);
   	kony.print("\n"+frmProfile.txtBoxEmail.text);*/
-	if((audienceFirstName ==frmProfile.txtBoxFname.text) && (audienceLastName == frmProfile.txtBoxLname.text) && (audienceEmail==frmProfile.txtBoxEmail.text) && (audienceMob==frmProfile.txtBoxMob.text)&&(audienceEmailSubs==emailStatusBefore)&&( audienceSmsSubs==smsStatusBefore)&&(audiencePushSubs == pushStatusBefore))
+	if((audienceFirstName ==frmProfile.txtBoxFname.text) && (audienceLastName == frmProfile.txtBoxLname.text)&& (audienceCountry == selectedCountry)&&(audienceState==selectedState) &&(audienceEmail==frmProfile.txtBoxEmail.text) && (audienceMob==frmProfile.txtBoxMob.text)&&(audienceEmailSubs==emailStatusBefore)&&( audienceSmsSubs==smsStatusBefore)&&(audiencePushSubs == pushStatusBefore))
     {
     	if(firstRegister==true){
     	
@@ -406,6 +581,8 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
     	audienceFirstName=frmProfile.txtBoxFname.text;
     	audienceLastName=frmProfile.txtBoxLname.text;
     	audienceEmail=frmProfile.txtBoxEmail.text;
+    	audienceCountry=selectedCountry;
+    	audienceState=selectedState;
     	audienceMob=frmProfile.txtBoxMob.text;
     //	audiencePushSubs=true;
     //	audienceSmsSubs=true;
@@ -427,8 +604,11 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
 					isPushSubs=true;
 					kony.application.dismissLoadingScreen();
 				//	kony.timer.schedule("mytimer123",geoPosition,60, true);
-					updateAudience();
-					geoPosition();
+				     if(kony.os.deviceInfo().name=="android")
+						updateAudienceIOS();
+					 else
+						updateAudienceIOS();
+					    geoPosition();
 				}
 			}else
 				kony.application.dismissLoadingScreen();
@@ -457,9 +637,15 @@ kony.print("\n\n ------------in updatePushSubscription--------------------\n");
     var pushSubscUrl=KMSPROP.kmsServerUrl+"/subscription";
 	//var pushSubscUrl="http://10.10.12.64:8282/kpns/subscription";
    // kony.print("\n pushSubscUrl:-"+pushSubscUrl);
-   // kony.print("\ninputParamTable:-"+JSON.stringify(inputParamTable));
+    kony.print("\ninputParamTable:-"+JSON.stringify(inputParamTable));
     try{ 
-   		kony.application.showLoadingScreen("sknLoading","updating...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+       if(firstRegister==true){
+       kony.application.showLoadingScreen("sknLoading","Creating...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+       }
+       else{
+       kony.application.showLoadingScreen("sknLoading","updating...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
+       }
+   		
 	   var connHandle = kony.net.invokeServiceAsync(
                         pushSubscUrl,inputParamTable,asyncCallback);
 	}catch(err){
@@ -493,7 +679,12 @@ function pushSubscription(regId,ostype){
 					ksid=result["subscriptionResponse"]["ksid"];
 					kony.store.setItem("KSID",ksid);
 					KMSPROP.kmsServerUrl=frmUrl.txtBoxUrl.text;
+					KMSPROP.appId=frmUrl.txtBoxAppId.text;
+					KMSPROP.senderID=frmUrl.txtBoxSenderID.text;
 					kony.store.setItem("KMSURL",KMSPROP.kmsServerUrl);
+					kony.store.setItem("KMSAppID",KMSPROP.appId);
+					kony.store.setItem("KMSSenderID",KMSPROP.senderID);
+					
 					isPushSubs=true;
 					audiencePushSubs=true;
 					kony.print("\npush subscription message:-"+result["subscriptionResponse"]["message"]);
@@ -565,8 +756,8 @@ function subscribeKMS(regId,ostype)
 	 		if(result["subscriptionResponse"][0]["statusCode"] == "200")
 	 		{
 				ksid = result["subscriptionResponse"][0]["ksid"];
-				kony.print("Device subscribed to Kony Messaging service sucessfully..");
-				//alert("Device subscribed to Kony Messaging service sucessfully..");
+				kony.print("Device subscribed to Kony Engagement service sucessfully..");
+				//alert("Device subscribed to Kony Engagement service sucessfully..");
 				//kony.store.setItem("ksid",ksid);
 				//audiencePushSubs=true;
 				//if(subsFrom=="preference")
@@ -574,7 +765,7 @@ function subscribeKMS(regId,ostype)
 				//updateLocations();
 			//	kony.timer.schedule("mytimer123",geoPosition, 60, true);
 			}else{
-				alert("Failed to subscribe to Kony Messaging Service!!" + result["subscriptionResponse"][0]["message"]);
+				alert("Failed to subscribe to Kony Engagement Service!!" + result["subscriptionResponse"][0]["message"]);
 				ksid =null;
 				audiencePushSubs=false;
 				kony.application.dismissLoadingScreen();
@@ -644,7 +835,7 @@ function unsubscribeKMS()
 					kony.print("unsubscription successful");
 					kony.print("ksid after registration is "+ksid);
 					
-					//alert("Device Unsubscribed to Kony Messaging service sucessfully..");
+					//alert("Device Unsubscribed to Kony Engagement service sucessfully..");
 				}
 			}else{
 				alert("Unable to unsubscribe from KMS\nplease try later..");
@@ -694,12 +885,12 @@ function KMSunregCallback(status,result)
 	 	//ksid = tmp["ksid"];
 		if((tmp["statusCode"] == 200))
 		{
-			//alert("Device unsubscribed from Kony Messaging Service sucessfully..");
+			//alert("Device unsubscribed from Kony Engagement Service sucessfully..");
 			kony.print(tmp["message"]);
 			alert(tmp["message"]);
 		}	
 		else
-			alert("Failed to unsubscribe from Kony Messaging Service!!"+tmp["message"]);
+			alert("Failed to unsubscribe from Kony Engagement Service!!"+tmp["message"]);
 	}	
 }
 /**
@@ -761,3 +952,12 @@ function checkStorage(){
    
    } 
 }
+
+
+function CountryState(){
+  
+  
+  
+}
+
+

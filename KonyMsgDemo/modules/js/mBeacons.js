@@ -228,23 +228,27 @@ function locate_iBeacons() {
         kony.print("**************** beconupdate service*****************");
         prevProximityUUIDString = proximityUUIDString;
         kony.print("prevProximityUUIDString after update is -------->",prevProximityUUIDString);
-        
-     
-    
+        var payload1={
+                   
+					    			
+					    			"ksid": ksid,
+					   				"beacons": {
+						     			"beacon": {
+											 "uuid": proximityUUIDString,
+											 "major":""+ major+"",
+											 "minor":""+ minor+""
+      												}
+   												  }
+  									            };
+					                            
   	var inputParamTable={
             httpheaders:{
             	"Content-Type":"application/json"
             },
-			httpconfig:{method:"POST"},
-			serviceID:"BeaconUpdate",appID:"kmsapp",
-			channel:"rc",
-			"ksid":ksid,
-   			"uuid":proximityUUIDString,
-   			"major":major,
-   			"minor":minor,
-   			"kmsurl":ipurl
+			
+		postdata:payload1
 	};
-    var url=appConfig.url;
+    var url=KMSPROP.kmsServerUrl+"/api/v1/beaconupdate"
     kony.print("\n-----inputparamtable is"+JSON.stringify(inputParamTable));
     kony.print("\n----url----->"+url) ; 
     try{ 
