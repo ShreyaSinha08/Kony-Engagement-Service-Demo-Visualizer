@@ -5039,12 +5039,12 @@
                             <functionName>None</functionName>
                             <functionNameMap>
                                 <entry>
-                                    <key>lua</key>
-                                    <value>None</value>
-                                </entry>
-                                <entry>
                                     <key>js</key>
                                     <value>preferences</value>
+                                </entry>
+                                <entry>
+                                    <key>lua</key>
+                                    <value>None</value>
                                 </entry>
                             </functionNameMap>
                             <paramDataMap>
