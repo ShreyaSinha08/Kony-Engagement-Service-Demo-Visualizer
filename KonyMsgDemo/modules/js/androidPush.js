@@ -5,9 +5,10 @@
 **/
 function callbackAndroidRegister()
 {
-  kony.print("senid:"+KMSPROP.senderID)
-		var configToRegister = {senderid:KMSPROP.senderID};
-		kony.push.register(configToRegister);
+	KMSPROP.senderID=frmUrl.txtBoxSenderID.text;
+  	kony.print("senid:"+KMSPROP.senderID)
+	var configToRegister = {senderid:KMSPROP.senderID};
+	kony.push.register(configToRegister);
 		//alert("Registration Done !!!");
 }
 /**

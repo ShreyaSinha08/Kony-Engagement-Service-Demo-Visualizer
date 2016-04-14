@@ -666,6 +666,9 @@ function pushSubscription(regId,ostype){
 		ostype="androidgcm";
 	opSystem=ostype;
 	kony.store.setItem("OSTYPE", opSystem);
+	KMSPROP.kmsServerUrl=frmUrl.txtBoxUrl.text;
+	KMSPROP.appId=frmUrl.txtBoxAppId.text;
+	KMSPROP.senderID=frmUrl.txtBoxSenderID.text;
 	function asyncCallback(status, result) 
 	{
     	kony.print("\n------status------>"+status);
@@ -678,9 +681,9 @@ function pushSubscription(regId,ostype){
 				{
 					ksid=result["subscriptionResponse"]["ksid"];
 					kony.store.setItem("KSID",ksid);
-					KMSPROP.kmsServerUrl=frmUrl.txtBoxUrl.text;
+					/*KMSPROP.kmsServerUrl=frmUrl.txtBoxUrl.text;
 					KMSPROP.appId=frmUrl.txtBoxAppId.text;
-					KMSPROP.senderID=frmUrl.txtBoxSenderID.text;
+					KMSPROP.senderID=frmUrl.txtBoxSenderID.text;*/
 					kony.store.setItem("KMSURL",KMSPROP.kmsServerUrl);
 					kony.store.setItem("KMSAppID",KMSPROP.appId);
 					kony.store.setItem("KMSSenderID",KMSPROP.senderID);
