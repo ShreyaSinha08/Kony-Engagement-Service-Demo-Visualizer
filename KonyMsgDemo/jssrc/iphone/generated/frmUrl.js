@@ -381,7 +381,7 @@ function addWidgetsfrmUrl() {
         "id": "btnSubmitProfile",
         "isVisible": true,
         "left": "0.06%",
-        "onClick": AS_Button_054011ab838e416bb8c2dac3b80c3f86,
+        "onClick": AS_Button_8490bc4cb2a54fc087c9cc1a99bdd195,
         "skin": "sknBtnKonyThemeNormal",
         "text": "DONE",
         "top": "92.04%",
@@ -425,7 +425,4 @@ function frmUrlGlobals() {
         "titleBar": false,
         "titleBarSkin": "slTitleBar"
     });
-    frmUrl.info = {
-        "kuid": "4a9a7fb7603c4f0f9ea574bc9a0fffba"
-    };
 };

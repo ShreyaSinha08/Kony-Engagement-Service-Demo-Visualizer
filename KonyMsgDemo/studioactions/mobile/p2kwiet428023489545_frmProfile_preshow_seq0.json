@@ -15,7 +15,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "frmProfilePreShow",
             "display": "frmProfilePreShow",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

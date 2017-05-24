@@ -1,8 +1,14 @@
+/**
+ *	Name    : resetDemo
+ *	Author  : Kony
+ *	Purpose : This function will show up the confirmation popup 
+ 			  "OK" : call the deleteAudience function
+              "Cancel" : Remains the same page
+ */
 function resetDemo() {
     if (initialReg == true) {
         frmSetting.show();
     } else {
-        //Defining basicConf parameter for alert
         var basicConf = {
             message: "Resetting the Demo App will remove all data stored locally on the server for this device.",
             alertType: constants.ALERT_TYPE_CONFIRMATION,
@@ -12,17 +18,13 @@ function resetDemo() {
             "alertIcon": "conf.png",
             alertHandler: handle2
         };
-        //Defining pspConf parameter for alert
         var pspConf = {};
-        //Alert definition
         kony.ui.Alert(basicConf, pspConf);
-        //var infoAlert = kony.ui.Alert(basicConf,pspConf);
+
         function handle2(response) {
             kony.print(JSON.stringify(response));
             var response = JSON.stringify(response);
             if (response == "true") {
-                //frmUrl.txtBoxUrl.text=KMSPROP.kmsServerUrl;
-                //	KMSPROP.kmsServerUrl=frmSetting.txtBoxurl;
                 deleteAudience();
                 KMSPROP.kmsServerUrl = frmSetting.txtBoxurl.text;
                 KMSPROP.appId = frmSetting.txtBoxAppId.text;
@@ -33,11 +35,10 @@ function resetDemo() {
     }
 }
 /**
- ****************************************************************
- *	Name    : delete
+ *	Name    : deleteAudience
  *	Author  : Kony
  *	Purpose : This function will delete the details of registered User.
- *****************************************************************/
+ */
 function deleteAudience() {
     kony.print("\n\n-----in deleteAudience------>\n");
 
@@ -46,27 +47,11 @@ function deleteAudience() {
         kony.print("\n----result---->" + JSON.stringify(result));
         if (status == 400) {
             if (result["httpresponse"] != undefined && result["httpresponse"]["responsecode"] == 200) {
-                //updateMessaageAlert(""+result["message"]);
                 updateMessaageAlert("User Deleted Successfully");
-                kony.store.removeItem("KSID");
-                kony.store.removeItem("KMSURL");
-                kony.store.removeItem("KMSAppID");
-                kony.store.removeItem("KMSSenderID");
-                kony.store.removeItem("AUDIENCE_FIRSTNAME");
-                kony.store.removeItem("AUDIENCE_LASTNAME");
-                kony.store.removeItem("AUDIENCE_EMAIL");
-                kony.store.removeItem("AUDIENCE_MOB");
-                kony.store.removeItem("AUDIENCE_STATUS");
-                kony.store.removeItem("AUDIENCE_SMS_SUBSCRIPTION");
-                kony.store.removeItem("AUDIENCE_EMAIL_SUBSCRIPTION");
-                kony.store.removeItem("AUDIENCE_PUSH_SUBSCRIPTION");
-                frmProfile.txtBoxFname.text = "";
-                frmProfile.txtBoxLname.text = "";
-                frmProfile.txtBoxEmail.text = "";
-                frmProfile.txtBoxMob.text = "";
-                frmEvent.txtBoxEventId.text = "";
-                frmUrl.txtBoxAppId.text = "";
-                frmUrl.txtBoxSenderID.text = "";
+                kony.store.clear();
+                frmProfile.destroy();
+                frmUrl.destroy();
+                frmEvent.destroy();
                 initialReg = true;
                 audienceFirstName = null;
                 audienceLastName = null;
@@ -105,11 +90,17 @@ function deleteAudience() {
         alert("Error" + err);
     }
 }
-
+/**
+ *	Name    : resetback
+ *	Author  : Kony
+ *	Purpose : This function will take back to the options form 
+ 			  once the demo app is resetted on click on Done
+ */
 function resetback() {
     KMSPROP.kmsServerUrl = frmSetting.txtBoxurl.text;
     if (initialReg == true) {
-        //frmUrl.show();
         frmOption.show();
-    } else frmHome.show();
+    } else {
+        frmHome.show();
+    }
 }

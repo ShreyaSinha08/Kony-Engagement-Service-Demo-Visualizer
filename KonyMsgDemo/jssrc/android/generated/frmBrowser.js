@@ -100,12 +100,7 @@ function frmBrowserGlobals() {
             "formAnimation": 0
         },
         "retainScrollPosition": false,
-        "showActionBar": true,
-        "showActionBarIcon": true,
         "titleBar": true,
         "windowSoftInputMode": constants.FORM_ADJUST_RESIZE
     });
-    frmBrowser.info = {
-        "kuid": "p2kwiet428023489458"
-    };
 };

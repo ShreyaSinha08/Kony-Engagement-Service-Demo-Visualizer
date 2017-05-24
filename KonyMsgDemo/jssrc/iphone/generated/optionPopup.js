@@ -151,7 +151,4 @@ function optionPopupGlobals() {
             "transitionEffect": "none"
         }
     });
-    optionPopup.info = {
-        "kuid": "p2kwiet428023489603"
-    };
 };

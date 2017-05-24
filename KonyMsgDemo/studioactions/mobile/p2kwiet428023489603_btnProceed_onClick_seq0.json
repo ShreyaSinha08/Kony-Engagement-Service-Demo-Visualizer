@@ -12,7 +12,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "positiveSelection",
             "display": "positiveSelection",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

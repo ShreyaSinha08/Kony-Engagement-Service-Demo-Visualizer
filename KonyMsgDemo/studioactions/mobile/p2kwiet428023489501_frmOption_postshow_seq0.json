@@ -15,7 +15,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "showOptionPopUp",
             "display": "showOptionPopUp",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

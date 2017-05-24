@@ -3,6 +3,10 @@ function AS_Button_054011ab838e416bb8c2dac3b80c3f86(eventobject) {
     return pushRegistration.call(this);
 }
 
+function AS_Button_8490bc4cb2a54fc087c9cc1a99bdd195(eventobject) {
+    return pushRegistration.call(this);
+}
+
 function AS_Button_fde30cd5d3d749e989b0623c9a3c3c5c(eventobject) {
     frmTrigerPush.show();
 }
@@ -27,11 +31,12 @@ function AS_Label_84f74b6b79c041408d1040a98c773ec6(eventobject, x, y) {
 function AS_TitleBar_7a3353e61d5f4c7c8bd23efd8373487e(eventobject) {}
 
 function kmsapppostappinit(params) {
-    return preAppinit.call(this);
+    return postAppinit.call(this);
 }
 
 function kmsapppreappinit(params) {
-    return setApplicationCallBacks.call(this);
+    callbackAndroidSetCallbacks();
+    callbackiPhoneSetCallbacks();
 }
 
 function p2kwiet428023489458_btnReload_onClick_seq0(eventobject) {
@@ -134,21 +139,6 @@ function p2kwiet428023489565_frmSetting_preshow_seq0(eventobject, neworientation
 
 function p2kwiet428023489565_txtBoxurl1_onTextChange_seq0(eventobject, changedtext) {
     frmSetting.txtBoxurl.text = "https://mycompany.messaging. konycloud.com";
-}
-
-function p2kwiet428023489589_btnSubmitProfile_onClick_seq0(eventobject) {
-    return pushRegistration.call(this);
-}
-
-function p2kwiet428023489589_frmUrl_preshow_seq0(eventobject, neworientation) {
-    frmUrl.txtBoxUrl.text = "";
-    frmUrl.txtBoxAppId.text = "";
-    frmUrl.txtBoxSenderID.text = "";
-    firstRegister = true;
-}
-
-function p2kwiet428023489589_linkAccount_onClick_seq0(eventobject) {
-    kony.application.openURL("http://www.kony.com/trials");
 }
 
 function p2kwiet428023489603_btnCancel_onClick_seq0(eventobject) {

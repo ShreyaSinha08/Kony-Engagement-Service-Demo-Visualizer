@@ -179,7 +179,4 @@ function frmEventGlobals() {
         },
         "titleBarSkin": "sknTitleKonyTheme"
     });
-    frmEvent.info = {
-        "kuid": "p2kwiet428023489469"
-    };
 };

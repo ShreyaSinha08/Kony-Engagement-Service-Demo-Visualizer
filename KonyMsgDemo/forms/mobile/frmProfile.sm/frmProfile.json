@@ -58,7 +58,6 @@
     "headeroverlap": false,
     "id": "frmProfile",
     "ide_init": "p2kwiet428023489545_frmProfile_init_seq0",
-    "ide_postShow": "p2kwiet428023489545_frmProfile_postshow_seq0",
     "ide_preShow": "p2kwiet428023489545_frmProfile_preshow_seq0",
     "info": null,
     "initdone": false,

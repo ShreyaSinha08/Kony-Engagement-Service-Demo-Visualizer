@@ -381,7 +381,4 @@ function frmSettingGlobals() {
         },
         "titleBarSkin": "sknTitleKonyTheme"
     });
-    frmSetting.info = {
-        "kuid": "p2kwiet428023489565"
-    };
 };

@@ -15,7 +15,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "countryName",
             "display": "countryName",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

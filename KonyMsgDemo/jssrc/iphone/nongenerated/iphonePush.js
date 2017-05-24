@@ -65,19 +65,13 @@ function onlinePushNotificationiPhoneCallback(msg) {
     kony.print("\n received push:-" + JSON.stringify(msg));
     if (msg["isRichPush"] != undefined) {
         displayRichPush(msg);
-    } else
-    //alert("Message: "+msg["content"]);
-    if (msg["alert"]["title"] != undefined) {
-        var basicConf = {
-            message: msg["alert"]["body"],
-            alertType: constants.ALERT_TYPE_INFO,
-            alertTitle: msg["alert"]["title"]
-        }; //,yesLabel:"OK",noLabel:"Don't Allow","alertIcon": "conf.png",alertHandler: handle2};
-        //Defining pspConf parameter for alert
-        var pspConf = {};
-        //Alert definition
-        kony.ui.Alert(basicConf, pspConf);
-    } else alert("Message: " + msg["alert"]);
+    } else {
+        if (msg["content-available"] != 1) {
+            alert("online Message: " + JSON.stringify(msg.alert));
+        } else {
+            alert("silent push received in online");
+        }
+    }
 }
 /**
  * Name		:	offlinePushNotificationiPhoneCallback
@@ -87,8 +81,11 @@ function onlinePushNotificationiPhoneCallback(msg) {
 function offlinePushNotificationiPhoneCallback(msg) {
     kony.print("************ JS offlinePushNotificationCallback() called *********");
     //alert("Message: "+msg["alert"]);
-    kony.print("\n received push:-" + JSON.stringify(msg));
-    kony.print(msg);
+    if (msg["content-available"] != 1) {
+        alert("offline Message: " + JSON.stringify(msg.alert));
+    } else {
+        alert("silent push received in offline");
+    }
     if (kony.os.deviceInfo().name == "iPhone") {
         kony.application.setApplicationBadgeValue("0");
     }

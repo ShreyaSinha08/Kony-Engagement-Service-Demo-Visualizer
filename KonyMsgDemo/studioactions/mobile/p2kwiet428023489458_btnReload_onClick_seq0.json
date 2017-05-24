@@ -12,7 +12,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "reloadCOntent",
             "display": "reloadCOntent",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

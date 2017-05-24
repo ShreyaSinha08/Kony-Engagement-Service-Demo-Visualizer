@@ -12,7 +12,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "negativeSelection",
             "display": "negativeSelection",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

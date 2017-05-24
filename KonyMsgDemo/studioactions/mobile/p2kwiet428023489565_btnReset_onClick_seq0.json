@@ -12,7 +12,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "resetDemo",
             "display": "resetDemo",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

@@ -10,9 +10,10 @@
         "actions": [{
             "id": "customcode_postappinit_807614280234893563",
             "type": "INVOKE_FUNCTION",
-            "sequenceKUID": "preAppinit",
-            "display": "preAppinit",
-            "inputparams": []
+            "sequenceKUID": "postAppinit",
+            "display": "postAppinit",
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

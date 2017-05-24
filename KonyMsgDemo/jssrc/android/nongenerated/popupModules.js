@@ -22,7 +22,6 @@ function negativeSelection() {
 }
 
 function positiveSelection() {
-    //Defining basicConf parameter for alert
     var basicConf = {
         message: "Notifications may include alerts,\nsounds and icon badges.These can\nbe configured in settings.",
         alertType: constants.ALERT_TYPE_CONFIRMATION,
@@ -32,11 +31,9 @@ function positiveSelection() {
         "alertIcon": "conf.png",
         alertHandler: handle2
     };
-    //Defining pspConf parameter for alert
     var pspConf = {};
-    //Alert definition
     kony.ui.Alert(basicConf, pspConf);
-    //var infoAlert = kony.ui.Alert(basicConf,pspConf);
+
     function handle2(response) {
         kony.print(JSON.stringify(response));
         var response = JSON.stringify(response);
@@ -45,40 +42,23 @@ function positiveSelection() {
         } else {
             showOptionPopUp();
         }
-        //if(response==true)frmHome.show();
-        //else
     }
     optionPopup.destroy();
 }
 
 function registrationInfoAlert(msg) {
-    //Defining basicConf parameter for alert
     var basicConf = {
         message: msg,
         alertType: constants.ALERT_TYPE_INFO,
         yesLabel: "OK",
         alertHandler: handle2
     };
-    //Defining pspConf parameter for alert
     var pspConf = {};
-    //Alert definition
     kony.ui.Alert(basicConf, pspConf);
-    //var infoAlert = kony.ui.Alert(basicConf,pspConf);
+
     function handle2(response) {
         kony.print(JSON.stringify(response));
         var response = JSON.stringify(response);
-        /*if(response == "true")
-        {
-           
-           frmUrl.show();
-        }
-        else
-        {
-           showOptionPopUp();
-         }*/
-        //if(response==true)frmHome.show();
-        //else
         frmProfile.show();
-        //frmHome.show();
     }
 }

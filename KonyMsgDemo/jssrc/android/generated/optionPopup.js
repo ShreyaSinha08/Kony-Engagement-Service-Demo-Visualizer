@@ -135,7 +135,4 @@ function optionPopupGlobals() {
         },
         "windowSoftInputMode": constants.POPUP_ADJUST_RESIZE
     });
-    optionPopup.info = {
-        "kuid": "p2kwiet428023489603"
-    };
 };

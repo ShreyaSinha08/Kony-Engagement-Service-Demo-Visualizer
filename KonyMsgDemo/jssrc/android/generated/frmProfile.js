@@ -419,7 +419,6 @@ function frmProfileGlobals() {
         "id": "frmProfile",
         "init": p2kwiet428023489545_frmProfile_init_seq0,
         "needAppMenu": true,
-        "postShow": p2kwiet428023489545_frmProfile_postshow_seq0,
         "preShow": p2kwiet428023489545_frmProfile_preshow_seq0,
         "skin": "sknKonyThemeForm",
         "title": "My Profile"
@@ -440,13 +439,8 @@ function frmProfileGlobals() {
             "formAnimation": 0
         },
         "retainScrollPosition": false,
-        "showActionBar": true,
-        "showActionBarIcon": true,
         "titleBar": false,
         "titleBarSkin": "sknTitleKonyTheme",
         "windowSoftInputMode": constants.FORM_ADJUST_RESIZE
     });
-    frmProfile.info = {
-        "kuid": "p2kwiet428023489545"
-    };
 };

@@ -56,6 +56,8 @@
     ],
     "containerheightreference": 1,
     "containerweight": 100,
+    "currentLocale": "default",
+    "device": "iPhone6",
     "displayorientation": 3,
     "enabledforidletimeout": false,
     "footeroverlap": false,
@@ -122,8 +124,12 @@
     },
     "paddinginpixel": false,
     "percent": true,
+    "platform": "iphone",
+    "prevDevice": "iPhone6",
+    "prevPlatform": "iphone",
     "restorewidgetprototypes": true,
     "retainscrollposition": false,
+    "shellCSS": "iOS_iPhone6",
     "spa": {
         "@class": "com.kony.gen.viz.model.container.property.form.SPAFormProperty",
         "inTransitionConfig": {

@@ -363,13 +363,8 @@ function frmSettingGlobals() {
             "formAnimation": 0
         },
         "retainScrollPosition": false,
-        "showActionBar": true,
-        "showActionBarIcon": true,
         "titleBar": false,
         "titleBarSkin": "sknTitleKonyTheme",
         "windowSoftInputMode": constants.FORM_ADJUST_RESIZE
     });
-    frmSetting.info = {
-        "kuid": "p2kwiet428023489565"
-    };
 };

@@ -12,7 +12,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "updatePushSubscription",
             "display": "updatePushSubscription",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

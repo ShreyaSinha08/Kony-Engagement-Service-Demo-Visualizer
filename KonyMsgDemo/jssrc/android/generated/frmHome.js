@@ -402,12 +402,7 @@ function frmHomeGlobals() {
             "formAnimation": 0
         },
         "retainScrollPosition": false,
-        "showActionBar": true,
-        "showActionBarIcon": true,
         "titleBar": false,
         "windowSoftInputMode": constants.FORM_ADJUST_RESIZE
     });
-    frmHome.info = {
-        "kuid": "p2kwiet428023489493"
-    };
 };

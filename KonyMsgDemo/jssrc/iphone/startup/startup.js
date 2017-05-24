@@ -22,6 +22,7 @@ function appInit(params) {
     kony.application.setCheckBoxSelectionImageAlignment(constants.CHECKBOX_SELECTION_IMAGE_ALIGNMENT_RIGHT);
     kony.application.setDefaultTextboxPadding(false);
     kony.application.setRespectImageSizeForImageWidgetAlignment(true);
+    initializeUserWidgets();
     frmBrowserGlobals();
     frmEventGlobals();
     frmHomeGlobals();
@@ -30,7 +31,6 @@ function appInit(params) {
     frmProfileGlobals();
     frmSettingGlobals();
     frmUrlGlobals();
-    frmUrl2Globals();
     optionPopupGlobals();
     Popup0fdec1725e93e4eGlobals();
     setAppBehaviors();
@@ -47,8 +47,8 @@ function setAppBehaviors() {
 };
 
 function themeCallBack() {
-    callAppMenu();
     initializeGlobalVariables();
+    callAppMenu();
     kony.application.setApplicationInitializationEvents({
         preappinit: kmsapppreappinit,
         init: appInit,

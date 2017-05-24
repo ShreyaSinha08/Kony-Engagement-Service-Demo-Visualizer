@@ -1,3 +1,3 @@
 function kmsapppostappinit(params) {
-    return preAppinit.call(this);
+    return postAppinit.call(this);
 }

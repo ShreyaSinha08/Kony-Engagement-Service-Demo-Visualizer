@@ -9,7 +9,6 @@ function callbackAndroidRegister()
   	kony.print("senid:"+KMSPROP.senderID)
 	var configToRegister = {senderid:KMSPROP.senderID};
 	kony.push.register(configToRegister);
-		//alert("Registration Done !!!");
 }
 /**
  * Name		:	callbackAndroidSetCallbacks
@@ -33,11 +32,6 @@ function regSuccessAndroidCallback(regId)
 {
 	kony.print("\n\n\n<--------in regSuccessAndroidCallback--------->\n\n\n");
 	kony.print("\nRegistration Id-->"+JSON.stringify(regId));
-//	alert("calling subscribe kms");
-	//kony.application.dismissLoadingScreen();
-	//kony.application.showLoadingScreen("sknLoading","Subscribing for push notification...",constants.LOADING_SCREEN_POSITION_FULL_SCREEN, true, true,null);
-	//subscribeKMS(regId,"android");
-  	registrationID=regId;
     kony.store.setItem("isFirstTime","true");
 	pushSubscription(regId,"android");
 }
@@ -71,34 +65,25 @@ function onlinePushNotificationAndroidCallback(msg)
     }
   else
     {
-      alert("Silent Push Received");
-      //addCalendarEvent();
+      alert("Silent Push Received in online");
     }
 } 
 function displayRichPush(msg){
-//Defining basicConf parameter for alert
 	var basicConf = {
 		message: msg["content"],
 		alertType: constants.ALERT_TYPE_CONFIRMATION,
 		alertTitle:'"Rich Push Message"',yesLabel:"show",
 	noLabel:"skip","alertIcon": "conf.png", alertHandler: handle2};
-
-	//Defining pspConf parameter for alert
 	var pspConf = {};
-	//Alert definition
 	kony.ui.Alert(basicConf,pspConf);
-	//var infoAlert = kony.ui.Alert(basicConf,pspConf);
-	
 	function handle2(response)
 	{
 		kony.print(JSON.stringify(response));
 		var response = JSON.stringify(response);
 		if(response == "true")
 		{
-		  // getRichMsg(msg["mid"]);
 		   var url=KMSPROP.kmsServerUrl+"/api/v1/messages/rich/"+msg["mid"];
 		   kony.print("rich push url:-"+url);
-		  // var urlConf = {URL: url, requestMethod:constants.BROWSER_REQUEST_METHOD_GET};
 		   frmBrowser.txtBoxUrl.text=url;
 		   frmBrowser.browserRichPush.url=url;
 		   frmBrowser.show();
@@ -114,7 +99,6 @@ function getRichMsg(mid){
 	function asyncCallback(status,response){
 		if(status==400){
 		kony.print("\nRich text fetched successfully:-"+response);
-		//frmBrowser.browserRichPush.htmlString=response;
 		kony.application.dismissLoadingScreen();
 		}
 	}
@@ -143,25 +127,9 @@ function offlinePushNotificationAndroidCallback(msg)
   if(msg["content-available"]!=1){
     	alert("Message: "+msg["content"]);}
   else{
-    //addCalendarEvent();
-    alert("silent push received");
+    alert("silent push received in offline");
   }
 }
-function addCalendarEvent()
-{
-            try 
-            {
-                        alert("calendar event is about to start");
-                        var evtobj={summary:"Event started", start:"26/11/2016 11:00:00", finish:"26/11/2016 12:59:45", 
-                        alarm:40,note:"Event will ends at 12.59 PM", access:"public"};
-                        kony.phone.addCalendarEvent(evtobj);
-            }
-            catch(PhoneError)
-            {
-                        alert("error in addCalendarEvent:: "+PhoneError);
-            }
-} 
-
 /**
  * Name		:	unregSuccessAndroidCallback
  * Author	:	Kony
@@ -184,5 +152,3 @@ function unregFailureAndroidCallback(errormsg)
 	alert("Error message: "+JSON.stringify(errormsg));
 	kony.application.dismissLoadingScreen();
 }
-
-  

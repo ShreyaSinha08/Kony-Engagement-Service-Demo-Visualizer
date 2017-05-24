@@ -1,3 +1,8 @@
+/**
+  @ function countryName
+  * this function map the country names and state names 
+  * to the listbox in form profile
+  */
 function countryName() {
     frmProfile.lstboxStates.masterData = [
         ["AL", "Alabama"],

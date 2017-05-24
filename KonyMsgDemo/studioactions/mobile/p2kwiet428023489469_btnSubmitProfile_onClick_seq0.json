@@ -12,7 +12,8 @@
             "type": "INVOKE_FUNCTION",
             "sequenceKUID": "triggerEvent",
             "display": "triggerEvent",
-            "inputparams": []
+            "inputparams": [],
+            "source": "module"
         }]
     }
 }

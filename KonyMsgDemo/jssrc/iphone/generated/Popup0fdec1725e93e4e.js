@@ -20,7 +20,4 @@ function Popup0fdec1725e93e4eGlobals() {
         "headerOverlap": false,
         "inputAccessoryViewType": constants.FORM_INPUTACCESSORYVIEW_CANCEL
     });
-    Popup0fdec1725e93e4e.info = {
-        "kuid": "e6aa989a41004a24b7d7767fcde3cf89"
-    };
 };

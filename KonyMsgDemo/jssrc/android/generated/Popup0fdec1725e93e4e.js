@@ -16,7 +16,4 @@ function Popup0fdec1725e93e4eGlobals() {
     }, {
         "windowSoftInputMode": constants.POPUP_ADJUST_PAN
     });
-    Popup0fdec1725e93e4e.info = {
-        "kuid": "e6aa989a41004a24b7d7767fcde3cf89"
-    };
 };

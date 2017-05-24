@@ -8,11 +8,11 @@
         }],
         "language": "js",
         "actions": [{
-            "id": "customcode_preappinit_16854280234898895",
-            "type": "INVOKE_FUNCTION",
-            "sequenceKUID": "setApplicationCallBacks",
-            "display": "setApplicationCallBacks",
-            "inputparams": []
+            "id": "ADD_SNIPPET__e738e86a99dc470592b33da7835b63c1",
+            "type": "ADD_SNIPPET",
+            "codeSnippet": "callbackAndroidSetCallbacks();\ncallbackiPhoneSetCallbacks();",
+            "parentId": null,
+            "callbackType": null
         }]
     }
 }

@@ -132,7 +132,4 @@ function frmOptionGlobals() {
         "statusBarStyle": constants.STATUS_BAR_STYLE_DEFAULT,
         "titleBar": false
     });
-    frmOption.info = {
-        "kuid": "p2kwiet428023489501"
-    };
 };

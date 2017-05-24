@@ -12,7 +12,6 @@ minor = null;
  *****************************************************************/
 function monitoringCallback(beaconRegion, beaconRegionState) {
     kony.print("BeaconRegion: ", kony.type(beaconRegion), " ", beaconRegion, " state is: ", beaconRegionState);
-    //alert("Inside monitoringCallback");
     if (beaconRegionState == "BeaconRegionStateInside") {
         beaconManager.startRangingBeaconsInRegion(beaconRegion);
     }
@@ -25,20 +24,10 @@ function monitoringCallback(beaconRegion, beaconRegionState) {
  *****************************************************************/
 function rangingCallback(beaconRegion, beacons) {
     kony.print("Beacons found for BeaconRegion: ", kony.type(beaconRegion), " ", beaconRegion, " Beacons: ", beacons);
-    // kony.print("Inside rangingCallback");
     var beaconLabel = "No beacons";
     var proximityLabel = "...";
     if (beacons.length > 0) {
         beacon = beacons[0];
-        /*
-        kony.print("Beacon proximityUUIDString:", beacon.getProximityUUIDString());
-        kony.print("Beacon major:", beacon.getMajor());
-        kony.print("Beacon minor:", beacon.getMinor());
-        kony.print("Beacon proximity:", beacon.getProximity());
-        kony.print("Beacon accuracy:", beacon.getAccuracy());
-        kony.print("Beacon rssi:", beacon.getrssi());
-        
-        */
         proximityUUIDString = beacon.getProximityUUIDString();
         major = beacon.getMajor();
         minor = beacon.getMinor();
@@ -96,12 +85,6 @@ function determineAuthorizationStatus() {
         beaconManager.setMonitoringStartedForRegionCallback(monitoringStartedForRegionCallback);
         beaconManager.setAuthorizationStatusChangedCallback(authorizationStatusChangedCallback);
     }
-    /* 
- 	"BeaconManagerAuthorizationStatusNotDetermined" 
-    "BeaconManagerAuthorizationStatusRestricted"
-    "BeaconManagerAuthorizationStatusDenied"
-    "BeaconManagerAuthorizationStatusAuthorized"
-    */
     kony.print("Status : ", beaconManager.authorizationStatus());
     if (beaconManager.isMonitoringAvailableForBeaconRegions()) {
         kony.print("Monitoring available");
@@ -136,16 +119,8 @@ function locate_iBeacons() {
         kony.print("--beaconManager.setMonitoringStartedForRegionCallback(monitoringStartedForRegionCallback);--");
         beaconManager.setAuthorizationStatusChangedCallback(authorizationStatusChangedCallback);
     }
-    /* 
- 	"BeaconManagerAuthorizationStatusNotDetermined" 
-    "BeaconManagerAuthorizationStatusRestricted"
-    "BeaconManagerAuthorizationStatusDenied"
-    "BeaconManagerAuthorizationStatusAuthorized"
-    */
     if (beaconManager.authorizationStatus() != "BeaconManagerAuthorizationStatusAuthorized") {
         kony.print("Unathorized to use location services");
-        // alert("Unathorized to use location services");
-        //return;
     }
     if (!beaconManager.isMonitoringAvailableForBeaconRegions()) {
         kony.print("Monitoring not available");
@@ -172,15 +147,11 @@ function beaconUpdate() {
         kony.print("\n------status------>" + status);
         if (status == 400) {
             if (result["opstatus"] == 0) {
-                //updateMessaageAlert(""+result["message"]);
                 kony.print("\n------updated result--->" + JSON.stringify(result));
             } else if (result["opstatus"] == 8009) {
                 kony.print("\ndescription is\n" + result["description"]);
-                if (result["message"] != undefined)
-                //updateMessaageAlert(""+result["message"]);
-                    kony.print("\n------updated result--->" + JSON.stringify(result));
+                if (result["message"] != undefined) kony.print("\n------updated result--->" + JSON.stringify(result));
             } else {
-                //updateMessaageAlert("unable to process please try later..");
                 kony.print("\n------updated result--->" + JSON.stringify(result));
             }
             kony.application.dismissLoadingScreen();
